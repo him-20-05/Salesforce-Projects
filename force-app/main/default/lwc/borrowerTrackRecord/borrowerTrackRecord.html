@@ -1,0 +1,812 @@
+<template>
+    <div class="container">
+    <lightning-progress-indicator current-step={currentStep} type="base" variant="base">
+        <lightning-progress-step label="Step 1" value="1" onclick={handleOnStepClick}></lightning-progress-step>
+        <lightning-progress-step label="Step 2" value="2" onclick={handleOnStepClick}></lightning-progress-step>
+        <lightning-progress-step label="Step 3" value="3" onclick={handleOnStepClick}></lightning-progress-step>
+        <lightning-progress-step label="Step 4" value="4" onclick={handleOnStepClick}></lightning-progress-step>
+        <lightning-progress-step label="Step 5" value="5" onclick={handleOnStepClick}></lightning-progress-step>
+        <lightning-progress-step label="Step 6" value="6" onclick={handleOnStepClick}></lightning-progress-step>
+        <lightning-progress-step label="Step 7" value="7" onclick={handleOnStepClick}></lightning-progress-step>
+    </lightning-progress-indicator>
+   
+    <!-- <lightning-card title="I.   BORROWER/GUARANTOR INFORMATION"></lightning-card> -->
+    <template if:true={isStepOne}>
+    <div class="container">
+        <div class="nav">
+            <h1>I. &nbsp;  BORROWER/GUARANTOR INFORMATION</h1>
+        </div> 
+        <br/>
+    <div class="slds-grid slds-gutters">
+      <div class="slds-col">
+        
+        
+        
+        <span>
+          
+       
+                   <ul>
+                   <li>
+                    <label for="name">Primary Borrower:</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <input type="text" value="" size="40">
+                   <br />
+                   <label for="address">Residence Address:</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                   <input type="text" size="40">
+               
+                   <br />
+                  
+                   <label for="city">City:</label>&nbsp;&nbsp;&nbsp;
+                   <input  type="text" value="" size="13">&nbsp;&nbsp;&nbsp;&nbsp;
+                   <label for="state">State:</label>&nbsp;&nbsp;&nbsp;
+                   <input type="text" value="" size="13">&nbsp;&nbsp;&nbsp;&nbsp;
+                   <label >Zip Code:</label>&nbsp;&nbsp;&nbsp;&nbsp;
+                   <input  type="text" value="" size="10">
+               <br />
+               <label for="emailaddress">Email Address:</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+               <input  type="email" value="" size="40">
+               <br /><br />
+               </li>
+               </ul>
+              
+          
+           </span>
+          </div>        
+                        
+      <div class="slds-col">
+        <span>
+
+          
+                
+                        <ul>
+                        <li>
+        
+                         <label >Cell Phone:</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                         <input  type="text" value="" size="20">
+                        <br />
+                      
+                        <label >Home Phone:</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                         <input  type="number" value="" size="20">
+                        <br />
+                       
+                        <label >Social Security Number:</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                         <input  type="tel" value="" size="20">
+                        <br/>
+                      
+                     
+                            <label>Are you Married:</label> &nbsp;&nbsp;&nbsp;
+                            <label>Yes: </label>
+                            <input type="checkbox" name="maritalStatus" onchange={handleCheckboxChange} value="married"/>
+                            <label>  No: </label>
+                            <input type="checkbox" name="maritalStatus" onchange={handleCheckboxChange} value="single"/>
+                           
+                
+                        
+                        
+                        
+                        
+                        <br />
+                    </li>
+                    </ul>
+                    
+               
+        </span>
+    </div>
+</div>
+<div class="slds-col slds-size_1-of-1">
+    <span>
+    <label>Experience: </label> &nbsp;&nbsp;
+                 <label>None: </label>&nbsp;&nbsp;
+                 <input type="checkbox"  name="None" onchange={handleCheckbox}>&nbsp;&nbsp;
+                 <label>1-3 Deals: </label>&nbsp;&nbsp;
+                 <input type="checkbox" name="None" onchange={handleCheckbox}>&nbsp;&nbsp;
+                 <label>5+ Deals: </label>&nbsp;&nbsp;
+                 <input type="checkbox" name="None" onchange={handleCheckbox}>&nbsp;&nbsp;
+
+                 <label>BK OR F/C Last 36 Months: </label> &nbsp;&nbsp;
+                 <label>Y: </label>&nbsp;&nbsp;
+                 <input type="checkbox"  name="Yes" onchange={handleBox}>&nbsp;&nbsp;
+                 <label>N: </label>&nbsp;&nbsp;
+                 <input type="checkbox" name="Yes" onchange={handleBox}> &nbsp;&nbsp;
+                 <label for="state">Credit Score:</label>&nbsp;&nbsp;
+            <input  type="text" value="" name="credit score:">  
+                 </span>
+                </div><br/>
+
+
+                <div class="slds-grid slds-gutters">
+                    <div class="slds-col">
+                      <span>
+            <ul>
+            <li>
+
+             <label >Co Borrower:</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+             <input  type="text" value="" name="name" size="40">
+                <br />
+                <label >Residence Address:</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <input  type="text" value="" size="40" >
+            
+                <br />
+               
+                <label for="city">City:</label>&nbsp;&nbsp;&nbsp;
+                   <input  type="text" value="" size="13">&nbsp;&nbsp;&nbsp;&nbsp;
+                   <label for="state">State:</label>&nbsp;&nbsp;&nbsp;
+                   <input type="text" value="" size="13">&nbsp;&nbsp;&nbsp;&nbsp;
+                   <label >Zip Code:</label>&nbsp;&nbsp;&nbsp;&nbsp;
+                   <input  type="text" value="" size="10">
+            <br />
+            <label for="emailaddress">Email Address:</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <input type="email" value="" size="40">
+            <br /><br />
+            </li>
+            </ul>
+        </span>
+    </div>
+    
+
+                <div class="slds-col">
+                  <span>
+                <ul>
+                <li>
+
+                    <label >Cell Phone:</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <input  type="tel" value="" size="20">
+                   <br />
+                 
+                   <label >Home Phone:</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <input  type="number" value="" size="20">
+                   <br />
+                   
+                   <label for="phone">Social Security Number:</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <input  type="number" value="" size="20" >
+                   <br />
+                   
+                   <label>Are you Married:</label> &nbsp;&nbsp;&nbsp;
+                            <label>Yes: </label>&nbsp;&nbsp;
+                            <input type="checkbox" name="NO" onchange={handlecheckboxChange} />
+                            <label> No: </label>
+                            <input type="checkbox" name="NO" onchange={handlecheckboxChange} />
+                   
+                
+                
+                <br />
+            </li>
+            </ul>
+        </span>
+    </div>
+</div>
+            <div class="slds-col slds-size_1-of-1">
+                <span>
+                <label>Experience: </label> &nbsp;&nbsp;
+                             <label>None: </label>&nbsp;&nbsp;
+                             <input type="checkbox"  name="Experience" onchange={handleEvent}>&nbsp;&nbsp;
+                             <label>1-3 Deals: </label>&nbsp;&nbsp;
+                             <input type="checkbox" name="Experience" onchange={handleEvent} >&nbsp;&nbsp;
+                             <label>5+ Deals: </label>&nbsp;&nbsp;
+                             <input type="checkbox" name="Experience" onchange={handleEvent}>&nbsp;&nbsp;
+                             <label>BK OR F/C Last 36 Months: </label> &nbsp;&nbsp;
+                             <label>Y: </label>&nbsp;&nbsp;
+                             <input type="checkbox"  name="scale" onchange={YesEvent}>&nbsp;&nbsp;
+                             <label>N: </label>&nbsp;&nbsp;
+                             <input type="checkbox" name="scale" onchange={YesEvent}> &nbsp;&nbsp;
+                             <label for="state">Credit Score:</label>&nbsp;&nbsp;
+                        <input  type="text" value="" name="credit score:">  <br/>
+                             </span>
+                            </div>
+                        
+                        
+
+    </div>
+</template>
+                        
+                   <!-- /////////////////  2nd form start from here //////////////// -->
+                   <template if:true={isSteptwo}>              
+                   <div class="container">
+                    <div class="nav">
+                        <h1>II. &nbsp;  ENTITY/COMPANY INFORMATION</h1>
+                    </div>
+                    <br/>
+                            <div class="slds-grid slds-gutters">
+                              <div class="slds-col">
+                                
+                                <span>
+                                           <ul>
+                                           <li>
+                                            <label for="name">Entity Name:</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                            <input  type="text" value="" size="40">
+                                           <br />
+                                           <p></p>
+                                           <label>Individual:</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                           <label>Partnership: </label>&nbsp;&nbsp;
+                                            <input type="checkbox" name="scales" onchange={formsection1}>&nbsp;&nbsp;
+                                            <label>Corporation: </label>&nbsp;&nbsp;
+                                            <input type="checkbox"  name="scales"  onchange={formsection1}>&nbsp;&nbsp;
+                                            <label>LLC: </label>&nbsp;&nbsp;
+                                            <input type="checkbox" name="scales"  onchange={formsection1}> &nbsp;&nbsp;
+                                            <label for="state">Other:</label>&nbsp;&nbsp;
+                                            <input type="checkbox" name="scales"  onchange={formsection1}> &nbsp;&nbsp;
+                                            <input  type="text" value="" name="Other">&nbsp;&nbsp;
+                                            <label for="state">EIN:</label>&nbsp;&nbsp;
+                                            <input  type="text" value="" name="Other" onchange={formsection1}>&nbsp;&nbsp;
+                                           <br />
+                                           </li>
+                                           </ul>
+                                        </span>
+                                        <p></p>
+                                    </div>   
+                              </div>
+                              
+                              <div class="slds-col slds-size_1-of-1">
+                                <span>
+                                    <ul>
+                                        <li>
+                                            <label for="city">Entity Address:</label>&nbsp;&nbsp;&nbsp;
+                                           <input  type="text" value="">&nbsp;&nbsp;&nbsp;
+                                           
+                                           <label for="city">City:</label>&nbsp;&nbsp;&nbsp;
+                                           <input  type="text" value="" >&nbsp;&nbsp;&nbsp;
+                                         
+                                           <label for="state">State:</label>&nbsp;&nbsp;&nbsp;
+                                           <input   type="text" value="" >&nbsp;&nbsp;&nbsp;
+                                           
+                                           <label >Zip Code:</label>&nbsp;&nbsp;&nbsp;
+                                           <input  type="text" value="" name="zipcode" size="10">&nbsp;&nbsp;&nbsp;&nbsp;
+                                       
+                                       </li>
+                                       </ul>
+                                      <p></p>
+                                  </span>
+                                  </div>
+                                  
+
+                                  <div class="slds-col slds-size_1-of-1">
+                                    <span>
+                                        <ul>
+                                            <li>
+            <label for="state">Billing Address (check here if same</label>&nbsp;&nbsp;
+                                            <input type="checkbox" name="scales" >) &nbsp;&nbsp;
+                                        </li>
+                                    </ul>
+                                   
+                               </span>
+                               </div>
+
+                                  <div class="slds-col slds-size_1-of-1">
+                                    <span>
+                                        <ul>
+                                            <li>
+                                                <label for="city">Entity Address:</label>&nbsp;&nbsp;&nbsp;
+                                               <input  type="text" value="" >&nbsp;&nbsp;&nbsp;
+                                               
+                                               <label for="city">City:</label>&nbsp;&nbsp;&nbsp;
+                                               <input  type="text" value="" >&nbsp;&nbsp;&nbsp;
+                                             
+                                               <label for="state">State:</label>&nbsp;&nbsp;&nbsp;&nbsp;
+                                               <input   type="text" value="" >&nbsp;&nbsp;&nbsp;&nbsp;
+                                               
+                                               <label >Zip Code:</label>&nbsp;&nbsp;&nbsp;&nbsp;
+                                               <input  type="text" value="" size="10">&nbsp;&nbsp;&nbsp;&nbsp;
+                                           
+                                           </li>
+                                           </ul>
+                                          
+                                      </span>
+                                      </div>
+
+
+
+</div>    
+</template>
+
+
+            <template if:true={isStepThree}>    <!-- /////////// 3rd form start from here /////////// -->
+
+                <div class="container">
+                    <div class="nav">
+                        <h1>III. &nbsp; BUSINESS PLAN FOR PROPERTY (Details will be reviewed with max LTV)</h1>
+                    </div>
+                    <br/>
+                            <div class="slds-grid slds-gutters">
+                              <div class="slds-col">
+                                
+                                <span>
+
+                                    <ul>
+                                        <li>
+
+                                    <label>Property Address: </label> &nbsp;&nbsp; &nbsp;&nbsp;
+                        <input  name="" class="inputfild1 " type="text" size="20" /> &nbsp;
+                        <label>Property Type: </label>
+                        &nbsp;&nbsp;&nbsp;
+                        
+                        <label>SFR </label>
+                         &nbsp;&nbsp;
+                         <input type="checkbox"  name="Property" value="Yes" onchange={handleChange} /> &nbsp;&nbsp;&nbsp;&nbsp;
+                         <label>MF3  </label>
+                         &nbsp;&nbsp;
+                         
+                         <input type="checkbox"  name="Property" value="Yes" onchange={handleChange}/>&nbsp;&nbsp; &nbsp;&nbsp;
+                          <label>MF4  </label>
+                         &nbsp;&nbsp;&nbsp;
+                         
+                         <input type="checkbox"  name="Property" value="Yes" onchange={handleChange}/>&nbsp;&nbsp; 
+                         <label> OTHER </label>
+                         &nbsp;&nbsp;
+                         
+                         <!-- <input type="checkbox"  name="" value="Yes" checked/> &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  -->
+
+                         <input type="checkbox" onchange={handleChange} name="Property" value="other"></input>
+                         <template if:true={areDetailsVisible}>
+                            &nbsp;&nbsp;
+                                <input  name="" class="inputfild1" type="text" size="14"/>
+                             
+                         </template>
+                         
+                       
+                        <br />
+                        <label>City: </label>
+                        <input  name="" class="inputfild1 " type="text" /> &nbsp;
+                        <label>State: </label>
+                        <input  name="" class="inputfild1 " type="text" size="8" /> 
+                        <label>Zip Code: </label>
+                        <input  name="" class="inputfild1 " type="text" size="12" /> &nbsp;&nbsp;
+                        <label>Annual Taxes: $ </label>
+                        <input  name="" class="inputfild1 " type="text" size="10" /> 
+                        <label>Annual HOI:$ </label>
+                        <input  name="" class="inputfild1 " type="text" size="10"/> &nbsp;
+                        <br />
+                        <label>Purchase: </label>
+                        <input type="checkbox"  name="" value="Yes" /> &nbsp; 
+                         &nbsp; &nbsp; &nbsp; 
+                        <label>Purchase/Rehab: </label>
+                        <input type="checkbox"  name="" value="Yes"  checked/> &nbsp; 
+                         &nbsp; &nbsp; &nbsp; 
+                         <label>Cash Out: </label>
+                        <input type="checkbox"  name="" value="Yes" /> &nbsp; 
+                         &nbsp; &nbsp; &nbsp; 
+                         <label>Refinance: </label>
+                        <input type="checkbox"  name="" value="Yes" /> &nbsp; 
+                         &nbsp; &nbsp; &nbsp; 
+                         &nbsp; &nbsp; &nbsp; 
+                         <label>New Construction: </label>
+                        <input type="checkbox"  name="" value="Yes" /> &nbsp; 
+                         &nbsp; &nbsp; &nbsp; 
+                         &nbsp; &nbsp; &nbsp; 
+                         <label>Rehab Only: </label>
+                        <input type="checkbox"  name="" value="Yes" /> &nbsp; 
+                        <br />
+                        <label>Purchase Prize:$ </label>
+                        <input  name="" class="inputfild1 " type="text" size="40" />  &nbsp;&nbsp;&nbsp;&nbsp;
+                        <label>Estimates Rehab:$ </label>
+                        <input  name="" class="inputfild1 " type="text" size="40"/>  
+                        <br />
+                        <label>Loan Amount:$ </label>
+                        <input  name="" class="inputfild1 " type="text" size="40"/>  &nbsp;&nbsp;&nbsp;&nbsp;
+                        <label>ARV Value: &nbsp;&nbsp; $ </label>
+                        <input  name="" class="inputfild1 " type="text" size="40"/> 
+                        <br/>
+                        <label>Leased: </label> &nbsp;&nbsp;&nbsp;&nbsp; 
+                        
+                        <label>Yes </label>&nbsp;<input type="radio"  name="" value="Yes" />&nbsp;&nbsp;
+                        &nbsp;  &nbsp; 
+                        <label>No </label>&nbsp;<input type="radio" name="" value="No" />&nbsp;&nbsp;&nbsp;&nbsp;
+                        <label>Monthly Rental:$ &nbsp;&nbsp;$ </label>
+                        <input  name="" class="inputfild1 " type="text" />  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <label>As-is Value: &nbsp;&nbsp;$ </label>
+                        <input  name="" class="inputfild1 " type="text" size="10"/>  &nbsp;&nbsp;
+                        <label>Proposed LTV: </label>
+                        <input  name="" value="0%" class="inputfild1 " type="text" size="10"/>  
+                        <br/>
+                        <label>Exit Strategy: </label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <label>Wholesale/R &nbsp; Refinance: </label>
+                        <input  name="Exit" class="inputfild1 " type="checkbox" onchange={exitStrategy} /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <label>Other: </label>
+                        <input type="checkbox"  name="Exit" value="Yes" onchange={exitStrategy}/> &nbsp;
+                         &nbsp; &nbsp; &nbsp; 
+                         <label>Gap Financing?</label>&nbsp; &nbsp; &nbsp;&nbsp;
+                         <label>Yes </label>&nbsp; <input type="checkbox"  name="gap" value="Yes" onchange={gapFinancing}/>
+                        &nbsp;  &nbsp; 
+                        <label>No </label>&nbsp;<input type="checkbox" name="gap" value="No" onchange={gapFinancing}/>
+                        <br/>
+                        &nbsp;  &nbsp; &nbsp;  &nbsp; &nbsp;  &nbsp; &nbsp;&nbsp;&nbsp; &nbsp;  &nbsp; &nbsp;  &nbsp; &nbsp;&nbsp;
+                        &nbsp; &nbsp;  &nbsp; &nbsp;  &nbsp; &nbsp;&nbsp;<label>e-Sale: </label>
+                        <input type="checkbox"  name="" value="Yes" />
+
+</li>
+</ul>
+
+
+
+
+                                </span>
+                                </div>
+                                </div>
+                </div>
+
+
+            </template>
+                <!-- ////////////////////  4th form start from here ////////////////// -->
+                <template if:true={isStepFour}> 
+                <div class="container">
+                <div class="slds-grid slds-wrap">
+                
+                        
+                            <div class="slds-col slds-size_1-of-2">
+                                <div class="nav">
+                                    <h1>IV. &nbsp; FINANCIAL ASSETS</h1>
+                                </div>
+                              <span>
+                               
+                                     
+                                    <ul>
+                                        <li> 
+                            <label class="radio">Self Employed: </label> 
+                            <input type="radio"  name="" value="Yes" />&nbsp;<label>Yes </label>&nbsp;
+                            &nbsp; 
+                            <input type="radio" name="" value="No" />&nbsp;<label>No </label>&nbsp;
+                            <br />
+                           
+                            <label class="label">Annual Income(s): </label>
+                            <input  name="" class="inputfild " type="text" />
+                            <br />
+                            <label class="label">Cash on hand & Cheching Account(s): </label>
+                            <input name="" class="inputfild " type="text" />
+                            <br />
+                            <label class="label">Savings Account(s): </label>
+                            <input name=""  class="inputfild " type="text" />
+                            <br />
+                            <label class="label">Business Account(s): </label>
+                            <input name="" class="inputfild " type="text" />
+                            <br />
+                            <label class="label">Real Estate: </label>
+                            <input name="" class="inputfild " type="text" />
+                            <br />
+                            <label class="label">401K/IRA Account: </label>
+                            <input name="" class="inputfild " type="text" /><br />
+                            <label class="label">Total Assets: </label>
+                            <input name=""  class="inputfild " value="$" type="text" />
+                            
+                           
+                        
+                        </li>
+                    </ul>
+                    
+                   </span>
+                </div>
+                      
+                        
+                     
+                   
+                      <!-- </div> -->
+                      
+                      <!-- <div class="container">   -->
+                  
+                        
+                        
+                        <div class="slds-col slds-size_1-of-2">
+                            <div class="nav">
+                                <h1>V. &nbsp; FINANCIAL DEBT</h1>
+                            </div>
+                            <span>
+                                   
+                                <ul>
+                                <li> 
+                                    <label class="label">Mortgages on Real Estate: </label>
+                            <input  name="" class="inputfild " type="text" />
+                            <br />
+                            <label class="label">Installment Accounts: </label>
+                            <input  name="" class="inputfild " type="text" />
+                            <br />
+                            <label class="label">Unpaid Taxes: </label>
+                            <input name="" class="inputfild " type="text" />
+                            <br />
+                            <label class="label">Loan on Life Insurance: </label>
+                            <input name="" class="inputfild " type="text" />
+                            <br />
+                            <label class="label">Other Liabilities: </label>
+                            <input name="" class="inputfild " type="text" />
+                            <br />
+                            <label class="label">Total Liabilities:</label>
+                            <input name="" class="inputfild " value="$" type="text"  />
+                            <br />
+                           <br/>
+                            <br />
+                            <label class="label">Net Worth: </label>
+                            <input name="" class="inputfild " value="$" type="text" />
+                            
+                           
+                        
+                        </li>
+                    </ul>
+                   </span>
+                </div>
+                    </div>
+                
+                </div>
+            </template>
+
+
+            <!-- /////////////////  6,7,8 form start from here //////////////// -->
+
+
+            <template if:true={isStepFive}> 
+            <div class="container">
+            
+                
+                
+                <div class="nav">
+                    <h1>&nbsp;&nbsp; VI.&nbsp; &nbsp;&nbsp;BORROWER DECELARATIONS</h1>
+                </div><br>
+                <div class="slds-col slds-size_1-of-1">
+                    <span>
+                    <ul>
+                        <li>
+
+                       
+                    <label>Defendant in suits or judgment? &nbsp;&nbsp;&nbsp;&nbsp;</label>
+                    <input type="radio" name="Yes" value="Yes" /> Yes
+                    &nbsp;&nbsp; 
+                    <input type="radio" name="No" value="No" /> No
+                    &nbsp;&nbsp;&nbsp;
+                    <label>Description: </label>
+                    <input name="Description:" type="text" size="40">
+               
+                    <br>
+                   
+                    <label>Default on any financial obligation? &nbsp;&nbsp;&nbsp;&nbsp;</label>
+                    <input type="radio" name="Yes" value="Yes" /> Yes
+                    &nbsp;&nbsp;
+                    <input type="radio" name="No" value="No" /> No
+                    &nbsp;&nbsp;&nbsp;
+                    <label>Description: </label>
+                    <input name="Description:" type="text" size="40">
+                 
+                    <br>
+                    
+                    <label>Bankruptcy? &nbsp;&nbsp;&nbsp;</label>
+                    <input type="radio" name="Yes" value="Yes" /> Yes
+                    &nbsp;&nbsp;&nbsp;&nbsp; 
+                    <input type="radio" name="No" value="No" /> No
+                    &nbsp;&nbsp;&nbsp;
+                    <label>Month/Year:</label>
+                    <input name="Month/Year:" type="text" size="20">
+                    &nbsp;&nbsp;
+                    <label>Explain: </label>
+                    <input name="Explain:" type="text" size="20">
+                    
+                    <br>
+                    
+                    <label>Foreclosure? &nbsp;&nbsp;&nbsp;</label>
+                    <input type="radio" name="Yes" value="Yes" /> Yes
+                    &nbsp;&nbsp;&nbsp;&nbsp; 
+                    <input type="radio" name="No" value="No" /> No
+                    &nbsp;&nbsp;&nbsp;
+                    <label>Month/Year:</label>
+                    <input name="Month/Year:" type="text" size="20">
+                    &nbsp;&nbsp;
+                    <label>Explain: </label>
+                    <input name="Explain:" type="text" size="20">
+                    
+                    <br>
+                  
+                    <label>Short Sale? &nbsp;&nbsp;&nbsp;&nbsp;</label>
+                    <input type="radio" name="Yes" value="Yes" /> Yes
+                    &nbsp;&nbsp;&nbsp;&nbsp;
+                    <input type="radio" name="No" value="No" /> No
+                    &nbsp;&nbsp;&nbsp;
+                    <label>Month/Year:</label>
+                    <input name="Month/Year:" type="text" size="20">
+                    &nbsp;&nbsp;
+                    <label>Explain: </label>
+                    <input name="Explain:" type="text" size="20">
+                   
+                    <br>
+                    
+                    <label>Convicted of a crime? &nbsp;&nbsp;&nbsp;&nbsp;</label>
+                    <input type="radio" name="Yes" value="Yes" /> Yes
+                    &nbsp;&nbsp;&nbsp;&nbsp;
+                    <input type="radio" name="No" value="No" /> No
+                    &nbsp;&nbsp;&nbsp;
+                    <label>Month/Year:</label>
+                    <input name="Month/Year:" type="text" size="20">
+                    &nbsp;&nbsp;
+                    <label>Explain: </label>
+                    <input name="Explain:" type="text" size="20">
+                    
+                    <br>
+                    
+                    <label>U.S. Citizen? &nbsp;&nbsp;&nbsp;&nbsp;</label>
+                    <input type="radio" name="Yes" value="Yes" /> Yes
+                    &nbsp;&nbsp;&nbsp;&nbsp; 
+                    <input type="radio" name="No" value="No" /> No
+                    &nbsp;&nbsp;&nbsp;
+                    <label>Origin:</label>&nbsp;&nbsp;&nbsp;
+                    <input name="Origin:" type="text" size="20">
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <label>Visa Status: </label>&nbsp;&nbsp;&nbsp;
+                    <input name="Visa Status:" type="text" size="20">
+                
+                    <br>
+                </li>
+            </ul>
+                </span>
+                </div>
+            </div>
+               </template>
+        
+             
+               <template if:true={isStepSix}> 
+            <div class="container">
+                <nav class="nav">
+                    &nbsp;&nbsp; VII.&nbsp;&nbsp;&nbsp;&nbsp;  Borrower Track Record(List "ALL" Fix and Flips or Fix and Hold Deals Completed In last 36 months.)
+                   
+                 </nav>
+                 <br/>
+        
+                <span class="one">1. &nbsp;</span> <span class="text-form">
+                    <label> Property Type:</label>&nbsp;&nbsp;&nbsp;
+                    <input/>&nbsp;&nbsp;&nbsp;
+                    <label> Purchase Date:</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <input/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <label> Purchase Price:</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <input></input>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <br/>
+                    <label> Amount Financed:</label>&nbsp;&nbsp;&nbsp;
+                    <input></input>&nbsp;&nbsp;&nbsp;
+                    <label> Rehab Budget:</label>&nbsp;&nbsp;&nbsp;
+                    <input></input>&nbsp;&nbsp;&nbsp;
+                    <label> Address 1:</label>&nbsp;&nbsp;&nbsp;
+                    <input></input>&nbsp;&nbsp;&nbsp;<br/>
+                    <label> City:</label>&nbsp;&nbsp;&nbsp;
+                    <input></input>&nbsp;&nbsp;&nbsp;
+                    <label> State:</label>&nbsp;&nbsp;&nbsp;
+                    <input></input>&nbsp;&nbsp;&nbsp;
+                    <label> Zip Code: </label>&nbsp;&nbsp;&nbsp;
+                    <input></input>&nbsp;&nbsp;&nbsp;
+                    <label> Entity Name: </label>&nbsp;&nbsp;&nbsp;
+                    <input></input>&nbsp;&nbsp;&nbsp;
+                    <label> Ownership %:</label>&nbsp;&nbsp;&nbsp;
+                    <input></input>&nbsp;&nbsp;&nbsp;
+                    <label> Exit: </label>&nbsp;&nbsp;&nbsp;
+                    <input></input>&nbsp;&nbsp;&nbsp;
+                    <label> Monthly Rent: </label>&nbsp;&nbsp;&nbsp;
+                    <input></input>
+        
+                </span>
+            
+                 
+                <br>
+                <br>
+                <br>
+        
+            <hr style="border-top-color: currentcolor">
+                <span class="one">2. </span> <span class="text-form"> 
+                    <label> Property Type:</label>&nbsp;&nbsp;&nbsp;
+                    <input/>&nbsp;&nbsp;&nbsp;
+                    
+                    <label> Purchase Date:</label>&nbsp;&nbsp;&nbsp;
+                    <input/>&nbsp;&nbsp;&nbsp;
+                    <label> Purchase Price:</label>&nbsp;&nbsp;&nbsp;
+                    <input></input>&nbsp;&nbsp;&nbsp;
+                    <label> Amount Financed:</label>&nbsp;&nbsp;&nbsp;
+                    <input></input>&nbsp;&nbsp;&nbsp;
+                    <label> Rehab Budget:</label>&nbsp;&nbsp;&nbsp;
+                    <input></input>&nbsp;&nbsp;&nbsp;
+                    <label> Address 1:</label>&nbsp;&nbsp;&nbsp;
+                    <input></input>&nbsp;&nbsp;&nbsp;
+                    <label> City:</label>&nbsp;&nbsp;&nbsp;
+                    <input></input>&nbsp;&nbsp;&nbsp;
+                    <label> State:</label>&nbsp;&nbsp;&nbsp;
+                    <input></input>&nbsp;&nbsp;&nbsp;
+                    <label> Zip Code: </label>&nbsp;&nbsp;&nbsp;
+                    <input></input>&nbsp;&nbsp;&nbsp;
+                    <label> Entity Name: </label>&nbsp;&nbsp;&nbsp;
+                    <input></input>&nbsp;&nbsp;&nbsp;
+                    <label> Ownership %:</label>&nbsp;&nbsp;&nbsp;
+                    <input></input>&nbsp;&nbsp;&nbsp;
+                    <label> Exit: </label>&nbsp;&nbsp;&nbsp;
+                    <input></input>&nbsp;&nbsp;&nbsp;
+                    <label> Monthly Rent: </label>&nbsp;&nbsp;&nbsp;
+                    <input></input>
+                </span>
+        
+                <br>
+                <br>
+                <br>
+        
+              <hr style="border-top-color: currentcolor">
+            
+                <span class="one">3. </span> <span class="text-form">&nbsp;&nbsp;&nbsp;&nbsp;
+                    <label> Property Type:</label>&nbsp;&nbsp;&nbsp;
+                    <input/>&nbsp;&nbsp;&nbsp;
+                    
+                    <label> Purchase Date:</label>&nbsp;&nbsp;&nbsp;
+                    <input/>&nbsp;&nbsp;&nbsp;
+                    <label> Purchase Price:</label>&nbsp;&nbsp;&nbsp;
+                    <input></input>&nbsp;&nbsp;&nbsp;
+                    <label> Amount Financed:</label>&nbsp;&nbsp;&nbsp;
+                    <input></input>&nbsp;&nbsp;&nbsp;
+                    <label> Rehab Budget:</label>&nbsp;&nbsp;&nbsp;
+                    <input></input>&nbsp;&nbsp;&nbsp;
+                    <label> Address 1:</label>&nbsp;&nbsp;&nbsp;
+                    <input></input>&nbsp;&nbsp;&nbsp;
+                    <label> City:</label>&nbsp;&nbsp;&nbsp;
+                    <input></input>&nbsp;&nbsp;&nbsp;
+                    <label> State:</label>&nbsp;&nbsp;&nbsp;
+                    <input></input>&nbsp;&nbsp;&nbsp;
+                    <label> Zip Code: </label>&nbsp;&nbsp;&nbsp;
+                    <input></input>&nbsp;&nbsp;&nbsp;
+                    <label> Entity Name: </label>&nbsp;&nbsp;&nbsp;
+                    <input></input>&nbsp;&nbsp;&nbsp;
+                    <label> Ownership %:</label>&nbsp;&nbsp;&nbsp;
+                    <input></input>&nbsp;&nbsp;&nbsp;
+                    <label> Exit: </label>&nbsp;&nbsp;&nbsp;
+                    <input></input>&nbsp;&nbsp;&nbsp;
+                    <label> Monthly Rent: </label>&nbsp;&nbsp;&nbsp;
+                    <input></input>
+                </span>
+                
+            </div>
+                    </template>
+        
+        
+        
+                    <template if:true={isStepSeven}> 
+        <div class="slds-grid slds-wrap">
+        <div class="slds-col slds-size_1-of-1">
+        <span>
+            <div class="container">
+            <nav class="nav">&nbsp; VIII.&nbsp; &nbsp;&nbsp;ATTORNEY INFORMATION</nav><br>
+            <div class="1st">
+                <label>Firm Name: </label>
+                    <input name="Firm Name:" type="text" size="50">
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                  <label>Attorney Name:</label> 
+                  <input name="Attorney Name:" type="text" size="50"> 
+            </div>
+            <br>
+            <div class="2nd">
+                <label>Address: </label>
+                    <input name="Address:" type="text" size="50"> 
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                  <label>Office Phone:</label> 
+                  <input name="Office Phone:" type="text" size="50">
+            </div>
+            <br>
+            <div class="3rd">
+                <label>City: </label>&nbsp;&nbsp;&nbsp;
+                    <input name="City:" type="text" size="15">
+                    &nbsp;&nbsp;&nbsp;  
+                  <label>State:</label> &nbsp;&nbsp;&nbsp;&nbsp;
+                  <input name="State:" type="text" size="15">&nbsp;&nbsp;
+                  &nbsp;
+                  <label>Zip Code:</label> &nbsp;&nbsp;&nbsp;
+                  <input name="Zip Code:" type="text" size="15">&nbsp;&nbsp;
+                  &nbsp;
+                  <label>Email:</label> &nbsp;&nbsp;&nbsp;
+                  <input name="Email:" type="text" size="15">
+            </div>
+        
+        </div>
+        </span>
+        </div>
+        </div>
+        </template>
+        <div class="slds-grid slds-wrap">
+            <div class="slds-col slds-size_1-of-1">
+                <span>
+        <template if:true={isEnablePrev}>
+            <lightning-button variant="brand" label="Previous" onclick={handlePrev} class="slds-button back-btn"></lightning-button>
+        </template>
+         
+        <template if:true={isEnableNext}>
+            <lightning-button label="Next" variant="brand" onclick={handleNext}
+            class="slds-button next-btn" id="btn"></lightning-button>
+        </template>
+        <template if:true={isEnableFinish}>
+            <lightning-button label="Finish" variant="brand" onclick={handleFinish} class="slds-button finish-btn"></lightning-button>
+        </template>
+        </span>
+    </div>
+    </div>
+</div>
+</template>

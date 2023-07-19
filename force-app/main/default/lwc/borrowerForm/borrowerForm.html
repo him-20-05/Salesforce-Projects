@@ -1,0 +1,146 @@
+<template>
+  <template if:true={showModal}>
+    <div class={modalClass}>
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>{selectedRecordType} Record Type</h2>
+            </div>
+            <div class="modal-body">
+      <template if:true={showRecordType1}>
+        <!-- fields for record type 1 -->
+        <lightning-input label="Address 1" value={address1Value} onchange={handleAddress1Change}>
+
+        </lightning-input>
+        <lightning-input value={amountValue} label="Amount Financed" onchange={handleAmountFinance}>
+          
+        </lightning-input>
+        <lightning-input value={cityValue} onchange={handleCity} label="City">
+          
+        </lightning-input>
+        <lightning-input value={entityValue} onchange={handleEntity} label="Entity Name">
+          
+        </lightning-input>
+        <lightning-input value={exitValue} onchange={handleExit} label="Exit">
+          
+        </lightning-input>
+        <lightning-input value={rentValue} onchange={handleMonthlyRent} label="Monthly Rent">
+          
+        </lightning-input>
+        <lightning-input value={ownershipValue} onchange={handleOwnership} label="Ownership">
+          
+        </lightning-input>
+        <lightning-input value={zipCodeValue} onchange={handleZip} label="Zip Code">
+          
+        </lightning-input>
+        <lightning-input value={stateValue} onchange={handleState} label="State">
+          
+        </lightning-input>
+        <lightning-input value={rehabValue} onchange={handlerehab} label="Rehab Budget">
+          
+        </lightning-input>
+        <lightning-input value={priceValue} onchange={handlePrice} label="Purchase Price">
+          
+        </lightning-input>
+        <lightning-input value={purchaseDateValue} onchange={handlePurchaseDate} label="Purchase Date">
+          
+        </lightning-input>
+        <lightning-input value={nameValue} onchange={handleName} label="Name">
+          
+        </lightning-input>
+      </template>
+      <template if:true={showRecordType2}>
+        <!-- fields for record type 2 -->
+
+        <lightning-input label="Address 1" value={address1Value} onchange={handleAddress1Change}>
+
+        </lightning-input>
+        <lightning-input value={amountValue} label="Amount Financed" onchange={handleAmountFinance}>
+          
+        </lightning-input>
+        <lightning-input value={cityValue} onchange={handleCity} label="City">
+          
+        </lightning-input>
+        <lightning-input value={entityValue} onchange={handleEntity} label="Entity Name">
+          
+        </lightning-input>
+        <lightning-input value={exitValue} onchange={handleExit} label="Exit">
+          
+        </lightning-input>
+        <lightning-input value={rentValue} onchange={handleMonthlyRent} label="Monthly Rent">
+          
+        </lightning-input>
+        <lightning-input value={ownershipValue} onchange={handleOwnership} label="Ownership">
+          
+        </lightning-input>
+        <lightning-input value={zipCodeValue} onchange={handleZip} label="Zip Code">
+          
+        </lightning-input>
+        <lightning-input value={stateValue} onchange={handleState} label="State">
+          
+        </lightning-input>
+        <lightning-input value={rehabValue} onchange={handlerehab} label="Rehab Budget">
+          
+        </lightning-input>
+        <lightning-input value={priceValue} onchange={handlePrice} label="Purchase Price">
+          
+        </lightning-input>
+        <lightning-input value={purchaseDateValue} onchange={handlePurchaseDate} label="Purchase Date">
+          
+        </lightning-input>
+        <lightning-input value={nameValue} onchange={handleName} label="Name">
+          
+        </lightning-input>
+      </template>
+      <template if:true={showRecordType3}>
+        <!-- fields for record type 3 -->
+
+        <lightning-input label="Address 1" value={address1Value} onchange={handleAddress1Change}>
+
+        </lightning-input>
+        <lightning-input value={amountValue} label="Amount Financed" onchange={handleAmountFinance}>
+          
+        </lightning-input>
+        <lightning-input value={cityValue} onchange={handleCity} label="City">
+          
+        </lightning-input>
+        <lightning-input value={entityValue} onchange={handleEntity} label="Entity Name">
+          
+        </lightning-input>
+        <lightning-input value={exitValue} onchange={handleExit} label="Exit">
+          
+        </lightning-input>
+        <lightning-input value={rentValue} onchange={handleMonthlyRent} label="Monthly Rent">
+          
+        </lightning-input>
+        <lightning-input value={ownershipValue} onchange={handleOwnership} label="Ownership">
+          
+        </lightning-input>
+        <lightning-input value={zipCodeValue} onchange={handleZip} label="Zip Code">
+          
+        </lightning-input>
+        <lightning-input value={stateValue} onchange={handleState} label="State">
+          
+        </lightning-input>
+        <lightning-input value={rehabValue} onchange={handlerehab} label="Rehab Budget">
+          
+        </lightning-input>
+        <lightning-input value={priceValue} onchange={handlePrice} label="Purchase Price">
+          
+        </lightning-input>
+        <lightning-input value={purchaseDateValue} onchange={handlePurchaseDate} label="Purchase Date">
+          
+        </lightning-input>
+        <lightning-input value={nameValue} onchange={handleName} label="Name">
+          
+        </lightning-input>
+      </template>
+      <div class="modal-footer">
+        <lightning-button label="Cancel" onclick={handleCancelClick}></lightning-button>
+        <lightning-button label="Save" variant="brand" type="submit" form={formElement}></lightning-button>
+    </div>
+</div>
+</div>
+</div>
+</template>
+
+</template>

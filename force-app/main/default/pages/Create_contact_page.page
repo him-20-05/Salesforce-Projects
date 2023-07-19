@@ -1,0 +1,237 @@
+<apex:page standardController="contact" extensions="contact_controller,CreateContactController" docType="html-5.0" applyHtmlTag="true" applyBodyTag="false" showHeader="true" standardStylesheets="false">
+    
+     
+  <style>
+   
+   body {
+      background-image:linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url("https://www.yerent.com/resource/1602069257000/NewYerent/img/background.jpg");
+      background-repeat:no-repeat;
+      background-size: cover;
+      color: orange;
+      background-attachment:fixed;
+      overflow-x:hidden;
+      object-fit: cover;
+    }
+    .panel-title {
+      font-size: 24px;
+      margin: auto;
+      text-align: center;
+      display: block;
+      color:ghostwhite;
+    }
+      .new-title {
+      font-size: 24px;
+      margin: 2%;
+      text-align: center;
+      display: block;
+    }
+
+    .form-controls {
+      width: 53%;
+    }
+    h1.header {
+      font-size: 30px;
+      position: relative;
+      left: 73%;
+      top: 185px;
+      font-family: fantasy;
+    }
+    .body {
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+    .label-style {
+      font-weight: bold;
+    }
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      margin-top: 10px;
+    }
+    .text-field {
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      width: 49%;
+    }
+    .form-container {
+      display: flex;
+      justify-content: center;
+    }
+    .date-row {
+      display: flex;
+      column-gap: 2%;
+    }
+    .panel-footer {
+      text-align: end;
+      margin: 10px auto;
+      }
+      .new-footer {
+      text-align: centre;
+      margin: 10px auto;
+      }
+      
+    .container {
+      margin: 0 auto;
+      width: 30%;
+    }
+    .header {
+      text-align: center;
+    }
+     body input.btn{
+      color: black;
+    background: orange;
+    width: 20%;
+      height: 28px;
+      border-radius:6px;
+      }
+      .btn-secondary{
+      position:relative;
+      bottom:38px;
+      background: orange;
+    width: 20%;
+      height: 28px;
+      border-radius:6px;
+      }
+
+    /* Styles for mobile devices */
+    @media screen and (max-width: 480px) {
+      h1.header {
+        font-size: 20px;
+        left: auto;
+        top: auto;
+      }
+      .body {
+        padding: 20px;
+      }
+      .container {
+        width: 100%;
+      }
+      .text-field {
+        width: 100%;
+      }
+    }
+
+    /* Styles for tablets */
+    @media screen and (min-width: 481px) and (max-width: 1024px) {
+      h1.header {
+        font-size: 24px;
+      }
+      .body {
+        padding: 40px;
+      }
+      .container {
+        width: 60%;
+      }
+    }
+
+    /* Styles for desktops */
+    @media screen and (min-width: 1025px) {
+      h1.header {
+        font-size: 30px;
+      }
+      .body {
+        padding: 60px;
+      }
+      .container {
+        width: 40%;
+      }
+    }
+      .zoom{
+      zoom:120%;
+      }
+       .zoom input[type="text"] {
+      opacity:0.8;
+      }
+       .image{
+      width:30%;
+      }
+     
+  </style>
+  <div class="body">
+    <div class="header">
+      <img src="https://apac-f-dev-ed--c.develop.vf.force.com/resource/1679892994000/ApacLogo3?" class="image" />
+        <h1 class="new-title"> APAC CLOUD CONSULTING SERVICES</h1>
+      <h1 class="panel-title">
+        CONTACT PAGE
+      </h1>
+    </div>
+    <div class="container">
+      <div class="form">
+        
+
+    <apex:form styleClass="zoom" >
+        <div class="form-container">
+                  
+                                 
+                            
+                              <div class="panel-body">
+                                   
+                               <div class="form-group" >
+                                   <div class="date-row">
+                                       
+                                  
+                                   <div class=" text-field">
+                                                                      
+                                    <label class="label-style">FIRST NAME</label>
+                                        <apex:inputText value="{!Contact.FirstName}" styleclass="form-control change-style" label=""/> 
+                                   </div>
+                          
+                                       
+                  
+                                   <div class=" text-field">
+                                    <label class="label-style">LAST NAME</label>
+                                        <apex:inputText value="{!Contact.LastName}" styleclass="form-control change-style" label=""/> 
+                                   </div>
+                                       </div> 
+                                </div>
+                                  
+                                   
+                                   <div class="form-group" >
+                                        <div class="date-row">
+                                   <div class=" text-field" >
+                                    <label class="label-style">EMAIL</label>
+                                        <apex:inputText value="{!Contact.Email}" styleclass="form-control" label=""/> 
+                                  </div>
+                                   <div class=" text-field">
+                                    <label class="label-style">PHONE</label>
+                                        <apex:inputText value="{!Contact.Phone}" styleclass="form-control" label=""/> 
+                                            </div>
+                                  </div>
+                                  </div>
+                                  
+                                   <div class="form-group" >
+                                        <div class="date-row">
+                                   <div class=" text-field" >
+                                    <label class="label-style">DRIVER AGE</label>
+                                        <apex:inputField value="{!Contact.Driver_Age__c }" styleclass="form-control" label="" style="height:22px; opacity:0.8"/> 
+                                  </div>
+                                   <div class=" text-field">
+                                    <label class="label-style">EXPERIENCE</label>
+                                        <apex:inputField value="{!Contact.Driving_Experience__c}" styleclass="form-control" label="" style="height:22px; opacity:0.8"/> 
+                                            </div>
+                                  </div>
+                                  </div>
+                                  
+                                   <div class="form-group">
+                              <label class="label-style">NOTE(OPTIONAL)</label>
+                                        <apex:inputText value="{!Contact.Note_Optional__c}" styleclass="form-control" label="" style="height:50px;"/> 
+                                  </div>
+                             
+                                   <div class="panel-footer">
+                                  <apex:commandButton value="SAVE" action="{!createContact}" styleClass="btn btn-primary"/>
+                              </div>
+                                   <div class="new-footer">
+                                  <apex:commandButton value="BACK" action="{!back}" styleClass=" btn-secondary"/>
+                              </div>
+                              </div>
+                              
+              </div>
+                        
+ </apex:form>
+    </div>
+            
+        </div>
+        
+        </div>
+</apex:page>

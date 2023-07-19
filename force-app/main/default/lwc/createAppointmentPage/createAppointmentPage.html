@@ -1,0 +1,16 @@
+<template>
+    <lightning-card title="Create Appointment">
+        <h1 style="font-family: fantasy;
+        border: 1px solid grey;
+        background: lightgrey;"> Contact Section </h1>
+        <div class="slds-p-horizontal_medium">
+            <lightning-input label="Search" onchange={handleSearchChange}></lightning-input>
+        </div>
+        <div class="btn">
+            <lightning-button label="Search" variant="brand" onclick={handleSearch} style="margin:1% "></lightning-button>
+            <lightning-button label="Reset" variant="neutral" onclick={handleReset}></lightning-button>
+        </div>
+    
+    </lightning-card>
+    
+</template>

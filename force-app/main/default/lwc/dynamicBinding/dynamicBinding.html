@@ -1,0 +1,13 @@
+<template>
+    <lightning-card title="dynamic binding" icon-name="utility:user">
+        <div class="slds-var-m-around_medium">
+            Hello, {myValue}!
+        </div>
+        <div style="padding:10px">
+        <lightning-input label="Dynamic Value" value={myValue} onchange={handleChange}>
+
+        </lightning-input>
+        <lightning-button value="save" width="10px"></lightning-button>
+    </div>
+    </lightning-card>
+</template>

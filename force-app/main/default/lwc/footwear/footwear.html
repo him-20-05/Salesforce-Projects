@@ -1,0 +1,33 @@
+<template >
+
+    <template if:true={footwearInfo} for:each={footwearInfo} for:item="Footwear" for:index="index" >
+
+        <div key={Footwear.Id} class="slds-m-top_large" style="background-color:currentColor">
+
+            <lightning-card variant="Narrow" 
+            class="slds-m-top_medium">
+
+            <div class="slds-grid slds-m-top_medium">
+                <div class="slds-col slds-size_6-of_12">
+                    <lightning-formatted-rich-text
+                     value={Footwear.Image__c}>
+
+                    </lightning-formatted-rich-text>
+                </div>
+                <div class="slds-col slds-size_6-of_12" style="margin-top:1%; margin-left:5%; font-weight:900; color:darkblue;font-family: sans-serif;">
+                    <p class="bookName slds-m-top_large">Footwear Name: {Footwear.Name}</p>
+                   
+
+                    
+                  
+                    <p class="bookPrice slds-m-top_large">Price: Rs {Footwear.	Price__c}</p>
+                </div>
+            </div>
+
+        
+        </lightning-card>
+        </div>
+
+
+    </template>
+</template>

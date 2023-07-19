@@ -1,0 +1,177 @@
+<apex:page controller="CheckContactController" standardStylesheets="false" docType="html-5.0">
+    <apex:stylesheet value="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+    <apex:includeSCRIPT value="https://code.jquery.com/jquery-3.2.1.min.js"/>
+    <apex:includeScript value="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"/>
+     <style type='text/css'>
+        body {
+          background-image:linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url("https://www.yerent.com/resource/1602069257000/NewYerent/img/background.jpg");
+          background-repeat:no-repeat;
+         background-size: cover;
+        text-align:justify;
+        color:orange;
+        overflow-x:hidden;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+       
+         background-attachment:fixed;
+       
+      }
+        .pbHeader{
+              color:ghostwhite;
+             padding:2%;
+             font-family:fantasy;
+             font-size: 260%;
+              left:32%;
+             position: relative;
+             
+            }
+         .nice-form input[type="text"] {
+             display: initial;
+             margin: 0 0 -9px;
+             box-sizing: content-box;
+        font-family: Raleway, sans-serif;
+         background: white;
+         opacity:0.8;
+         
+             }
+         .btn{
+   
+    background: transparent;
+    border: 1px solid #F78D1F;
+    color: #F78D1F;
+    border-radius: 3px;
+         margin-right:30%
+         
+         }
+         .btn-btn{
+        
+    background-color: #F78D1F;
+    border: 1px solid #F78D1F;
+    color: #171717;
+    border-radius: 3px;
+        } 
+        @media (max-width: 767px){
+         .pbHeader {
+         font-size:200%;
+         left:22%;
+         }
+         .nice-form input[type="text"]{
+         width:100%;
+         margin:0 0 10px;
+         }
+         .btn{
+         width:45%;
+         height:35px;
+         margin-right:6%;
+         margin-bottom:5px;
+         }
+         .btn-btn{
+         width:45%;
+         height:35px;
+         margin-bottom:5px;
+         }
+         }
+          @media (min-width: 768px) and (max-width: 991px){
+         .pbHeader {
+         font-size:200%;
+         left:25%;
+         }
+         .nice-form input[type="text"]{
+         width:100%;
+         margin:0 0 10px;
+         }
+         .btn{
+         width:30%;
+         height:35px;
+         margin-right:2%;
+         margin-bottom:5px;
+         }
+         .btn-btn{
+         width:30%;
+         height:35px;
+         margin-bottom:5px;
+         }
+         }
+          @media (min-width: 992px){
+         .pbHeader {
+         font-size:260%;
+         left:32%;
+         }
+         .nice-form input[type="text"]{
+         width:70%;
+         margin:0 0 -9px;
+         }
+         .btn{
+         width:6%;
+         height:23px;
+         line-height: 21px;
+         margin-right:2%;
+         margin-bottom:5px;
+         }
+         .btn-btn{
+         width:7%;
+         height:23px;
+         line-height: 20px;
+         margin-bottom:5px;
+         }
+         }
+        
+    </style>
+     <table style = "font-family:fantasy; padding-bottom:50px;" >
+        <tr>
+            <td><apex:image id="ApacLogo3" url="https://apac-f-dev-ed--c.develop.vf.force.com/resource/1679892994000/ApacLogo3?" width="25%" height="25%" style="left:33%;position:relative;margin-top:3%;background-size:cover"/></td>
+        </tr>
+        <tr>
+            <td style="font-size:245%; padding-left:50%; padding-right:7%; color:orange; right:24%;position:relative">APAC CLOUD CONSULTING SERVICES </td>
+        </tr>
+    </table>
+   
+    <div style="margin-top:5%">
+        
+            
+            
+    <apex:form style="zoom:150%; height:100%;width:100%"  styleClass="nice-form">
+      
+    <apex:pageMessages />
+    
+
+        
+        
+        <apex:pageBlock id="appPageBlock" mode="edit">
+            <img src="https://www.yerent.com/resource/1602069257000/NewYerent/img/man-icon.png" style="position:relative;left:315px;top:35px;transform: translateY(-50%);" />
+            <apex:facet name="header">EMAIL CHECK</apex:facet>
+
+           
+        <apex:pageBlockSection >
+             <div style="margin:100px; display:inline">
+            <span>
+               <apex:inputText value="{!email }" style="width:116%;margin-top:5px;height:21px; left:70px;position:relative" id="email" label="Email" />
+           </span>
+            </div>
+             </apex:pageBlockSection> 
+            
+            <apex:pageBlockSection >
+                <div style="margin:100px; display:inline">
+            <apex:inputText value="{!NoteOptional}" style="width:116%;height:50px; margin-bottom:5px; left:10px;position:relative;box-sizing: content-box;
+             margin: 3px 0 10px 0;" styleclass="bold" label="Note(optional)"/>
+                </div>
+             </apex:pageBlockSection> 
+            
+            
+
+
+   <apex:commandButton value="BACK" action="{!back}" styleClass="btn"/>
+            
+  
+   <apex:commandButton action="{!checkEmailOnContact}" value="SEND" styleClass="btn-btn"/>
+
+
+
+        </apex:pageBlock>
+    </apex:form>
+        </div>
+        
+</apex:page>

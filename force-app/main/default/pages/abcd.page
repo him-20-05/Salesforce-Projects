@@ -1,0 +1,33 @@
+<apex:page controller="ContactControl" standardStylesheets="false">
+    <style type='text/css'>
+   
+    body {
+      background-image:linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url("https://www.yerent.com/resource/1602069257000/NewYerent/img/background.jpg");
+      background-repeat:no-repeat;
+      background-size: cover;
+      color: orange;
+      background-attachment:fixed;
+      overflow-x:hidden;
+      object-fit: cover;
+    }
+    </style>
+    <apex:form >
+        <apex:pageBlock >
+            <apex:pageBlockSection >
+                <apex:inputText value="{!searchString}" label="Search Contact Email"/>
+                <apex:commandButton value="Search" action="{!searchEmail}" accesskey=""/>
+            </apex:pageBlockSection>
+            <apex:pageBlockSection rendered="{!emailFound}">
+                <apex:outputText value="Contact Email: {!email}"/>
+            </apex:pageBlockSection>
+            <apex:pageBlockSection rendered="{!not(emailFound)}">
+                <apex:outputText value="Contact not found. Redirecting..."/>
+            </apex:pageBlockSection>
+        </apex:pageBlock>
+    </apex:form>
+    <script>
+        window.setTimeout(function(){
+            window.location.replace("https://apac-f-dev-ed--c.develop.vf.force.com/apex/Create_contact_page?core.apexpages.request.devconsole=1");
+        }, 10000);
+    </script>
+</apex:page>

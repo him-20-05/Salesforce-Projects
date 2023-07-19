@@ -1,0 +1,52 @@
+<apex:page standardController="Account" sidebar="false" showHeader="false">
+    <apex:form >
+
+    <apex:pageBlock title="Add an Account">
+<apex:pageMessages />
+<apex:pageBlockSection columns="1">
+    <apex:inputField value="{! Account.Name }"/>
+     <apex:inputField value="{! Account.Owner.Name}"/>
+        <apex:inputField value="{!account.BillingStreet}" />
+        <apex:inputField value="{!account.BillingCity}" />
+        <apex:inputField value="{!account.BillingState}" />
+        <apex:inputField value="{!account.BillingCountry}" />
+        <apex:inputField value="{!account.BillingPostalCode}" />
+    <apex:inputField value="{! Account.Phone }"/>        
+    <apex:inputField value="{! Account.Industry }"/>        
+    <apex:inputField value="{! Account.AnnualRevenue }"/>
+</apex:pageBlockSection>
+
+
+    <style>
+      #map {
+        width: 500px;
+        height: 400px;
+        background-color: #CCC;
+      }
+    </style>
+<script src="https://maps.googleapis.com/maps/api/js"></script>
+<script>
+  function initialize() {
+    var mapCanvas = document.getElementById('map');
+    var mapOptions = {
+      center: new google.maps.LatLng(44.5403, -78.5463),
+      zoom: 8,
+      mapTypeId: google.maps.MapTypeId.ROADMAP
+    }
+    var map = new google.maps.Map(mapCanvas, mapOptions);
+  }
+  google.maps.event.addDomListener(window, 'load', initialize);
+</script>
+<apex:pageBlock >
+<div id="map"></div>
+</apex:pageBlock>
+
+        <apex:pageBlockButtons >
+            <apex:commandButton action="{! save }" value="Save" />        
+        </apex:pageBlockButtons>
+
+    </apex:pageBlock>
+
+
+    </apex:form>
+</apex:page>

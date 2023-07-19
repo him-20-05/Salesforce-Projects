@@ -1,0 +1,33 @@
+<template >
+
+    <template if:true={fashionInfo} for:each={fashionInfo} for:item="Fashion" for:index="index" >
+
+        <div key={Fashion.Id} class="slds-m-top_large" style="background-color:currentColor">
+
+            <lightning-card variant="Narrow" 
+            class="slds-m-top_medium">
+
+            <div class="slds-grid slds-m-top_medium">
+                <div class="slds-col slds-size_6-of_12">
+                    <lightning-formatted-rich-text
+                     value={Fashion.Cover_Image__c}>
+
+                    </lightning-formatted-rich-text>
+                </div>
+                <div class="slds-col slds-size_6-of_12" style="margin-top:1%; margin-left:5%; font-weight:900; color:darkblue;font-family: sans-serif;">
+                    <p class="bookName slds-m-top_large">Clothes Name: {Fashion.Name}</p>
+                   
+
+                    
+                  
+                    <p class="bookPrice slds-m-top_large">Price: Rs {Fashion.Price__c}</p>
+                </div>
+            </div>
+
+        
+        </lightning-card>
+        </div>
+
+
+    </template>
+</template>

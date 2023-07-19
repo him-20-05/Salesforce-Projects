@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>57.0</apiVersion>
+    <environments>Default</environments>
+    <formulas>
+        <name>FormulaForTotalCommissionAmount</name>
+        <dataType>Currency</dataType>
+        <expression>{!Commission_should_not_exceed_1}*{!Deal_Amount}</expression>
+        <scale>2</scale>
+    </formulas>
+    <interviewLabel>Commission Calculator {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Commission Calculator</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>Flow</processType>
+    <screens>
+        <name>Commission_Calculator</name>
+        <label>Commission Calculator</label>
+        <locationX>176</locationX>
+        <locationY>158</locationY>
+        <allowBack>false</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>false</allowPause>
+        <connector>
+            <targetReference>Total_Commission</targetReference>
+        </connector>
+        <fields>
+            <name>Deal_Amount</name>
+            <dataType>Currency</dataType>
+            <fieldText>Deal Amount ($)</fieldText>
+            <fieldType>InputField</fieldType>
+            <isRequired>true</isRequired>
+            <scale>0</scale>
+        </fields>
+        <fields>
+            <name>Commission_should_not_exceed_1</name>
+            <dataType>Number</dataType>
+            <fieldText>Commission % (should not exceed 1)</fieldText>
+            <fieldType>InputField</fieldType>
+            <isRequired>true</isRequired>
+            <scale>2</scale>
+        </fields>
+        <showFooter>true</showFooter>
+        <showHeader>true</showHeader>
+    </screens>
+    <screens>
+        <name>Total_Commission</name>
+        <label>Total Commission</label>
+        <locationX>176</locationX>
+        <locationY>278</locationY>
+        <allowBack>true</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>true</allowPause>
+        <fields>
+            <name>DispalyCommission</name>
+            <fieldText>&lt;p&gt;&lt;strong&gt;&lt;em&gt;So Total Commission Amount is :&lt;/em&gt;&lt;/strong&gt; {!FormulaForTotalCommissionAmount}&lt;/p&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
+        <showFooter>true</showFooter>
+        <showHeader>true</showHeader>
+    </screens>
+    <start>
+        <locationX>50</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Commission_Calculator</targetReference>
+        </connector>
+    </start>
+    <status>Obsolete</status>
+</Flow>

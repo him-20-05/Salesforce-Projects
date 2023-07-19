@@ -1,0 +1,130 @@
+<apex:page standardController="contact" extensions="contact_controller,CreateContactController" standardStylesheets="false">
+      <style>
+        body {
+          
+          background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),url("https://www.yerent.com/resource/1602069257000/NewYerent/img/background.jpg");
+          background-repeat:no-repeat;
+         background-size: cover;
+         overflow-x:hidden;
+          color:orange;
+          font-weight:bold;
+           background-attachment:fixed;
+          position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+          
+          }
+          .nice-form input[type="text"] {
+             display: initial;
+             margin: 8px 0;
+             box-sizing: content-box;
+          font-family: Raleway, sans-serif;
+         background: white;
+         opacity:0.8;
+         
+          
+             }
+
+         
+          .nice-form input[type="text"]:focus, .nice-form input[type="tel"]:focus, .nice-form input[type="email"]:focus {
+           border: 2px solid #5f9ea0;
+}
+      .pbHeader{
+             color:ghostwhite;
+             padding:10px;
+             font-family:fantasy;
+             font-size: xx-large;
+             left:187px;
+             position: relative;
+             
+            }    
+          
+           .btn{
+             width:52%;
+    height: 23px;
+    line-height: 21px;
+    background: transparent;
+    border: 1px solid #F78D1F;
+    color: #F78D1F;
+    border-radius: 4px;
+    transition: background 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
+         position:relative;
+         left:128%;
+         bottom:45px;
+         }
+
+.btn-btn{
+         width: 52%;
+    height: 23px;
+    line-height: 20px;
+    background: #F78D1F;
+    border: 1px solid #F78D1F;
+    color: #171717;
+    border-radius: 4px;
+    transition: background 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
+          position:relative;
+         left:332%;
+         bottom:69px;
+        } 
+  
+        
+        
+    </style>
+     <table style = "font-family:fantasy; padding-bottom:30px;">
+        <tr>
+            <td><apex:image id="ApacLogo3" url="https://apac-f-dev-ed--c.develop.vf.force.com/resource/1679892994000/ApacLogo3?" width="25%" height="25%" style="left:33%;position:relative;margin-top:3%"/></td>
+        </tr>
+        <tr>
+            <td style="font-size:245%; padding-left:50%; padding-right:7%; color:orange; right:24%;position:relative">APAC CLOUD CONSULTING SERVICES </td>
+        </tr>
+    </table>
+   
+    <div style="margin-top:150px;">
+        
+    <apex:form style="zoom:200%; height:550px;width:100% margin-right:20%" styleClass="nice-form">
+        <apex:pageBlock id="appPageBlock" >
+            <apex:facet name="header">CONTACT INFO</apex:facet>
+            
+            
+             <apex:pageBlockSection columns="2">
+                  <apex:outputLabel value="First Name" for="inputField" style="position: relative;left:132px;bottom:5px"/>
+                 <apex:inputText value="{! Contact.FirstName }" style="width:100px; position:relative;top:18px;" label=""/>
+                 
+                 <apex:outputLabel value="Last Name" for="inputField" style="position:relative;left:273px;bottom:42px"/>
+            <apex:inputText value="{! Contact.LastName }" style="width:100px;left:141px; position:relative;bottom:19px" label=""/>
+                 
+                 <apex:outputLabel value="Email" for="inputField" style="position: relative;left:132px;bottom:36px"/>
+            <apex:inputField value="{! Contact.Email }" style="width:100px;position: relative;bottom:15px" label=""/>
+                 
+                 <apex:outputLabel value="Phone" for="inputField" style="position: relative;left:273px;bottom:73px"/>
+            <apex:inputField value="{! Contact.Phone}" style="width:100px;left:141px;position:relative;bottom:53px" label=""/>
+                 
+                 <apex:outputLabel value="Driver Age" for="inputField" style="position:relative;left:132px;bottom:61px"/>
+            <apex:inputField value="{! Contact.Driver_Age__c }" style="position:relative;bottom:41px;width:107px;padding:2px;opacity:0.8" label=""/>
+                 
+                 <apex:outputLabel value="Driving Experience" for="inputField" style="position: relative;left:273px;bottom:82px"/>
+            <apex:inputField value="{! Contact.Driving_Experience__c}" style="position:relative;bottom:62px;width:107px;padding:2px;left:141px;opacity:0.8"  label=""/>
+                 
+                 <apex:outputLabel value="Note Optional" for="inputField" style="position: relative;left:132px;bottom:80px"/>
+              <apex:inputField value="{! Contact.Note_Optional__c }" style="width:243px;height:42px;margin-top:15px;position:relative;
+             box-sizing: content-box; margin: 8px 0 2px 0;bottom:49px;opacity:0.8"  label=""/>
+            </apex:pageBlockSection>
+            
+             <apex:pageBlockSection >
+                 <apex:outputLabel value="Citizen of India" for="inputField" style="position: relative;left:155px;bottom:47px"/>
+              <apex:inputField value="{! Contact.My_credit_card_covers_CDW_in_India__c }" style="width:100px;margin-top:10px;position:relative;bottom:50px;right:21px;opacity:0.8" styleclass="bold" label=""/>
+             </apex:pageBlockSection> 
+            
+            <apex:pageBlockButtons >
+            <apex:commandButton value="BACK" action="{!back}" styleClass="btn"/>
+            <apex:commandButton action="{!createContact}" value="SAVE" styleClass="btn-btn"/>
+            </apex:pageBlockButtons>
+            
+            
+       </apex:pageBlock>
+    </apex:form>
+        </div>
+</apex:page>

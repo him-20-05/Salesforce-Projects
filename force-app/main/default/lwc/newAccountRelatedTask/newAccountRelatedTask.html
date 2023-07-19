@@ -1,0 +1,44 @@
+<template>
+  <lightning-card title="Contact Search">
+      <div class="slds-grid slds-wrap">
+          <div class="slds-col slds-size_1-of-2">
+              <div class="slds-grid slds-gutters">
+                  <div class="slds-col">
+                      <lightning-input type="text" label="Search Contact" value={searchKeyword} onchange={handleSearchKeywordChange} style="width: 200%;"></lightning-input>
+                  </div>
+                  <div class="slds-col" style="margin: 4%;
+                  position: relative;
+                  left: 37%;
+                  top: 4px;">
+                      <lightning-button label="Search" variant="brand" onclick={handleSearch} style="margin:10%"></lightning-button>
+                      <lightning-button label="Reset" variant="neutral" onclick={handleReset}></lightning-button>
+                  </div>
+              </div>
+          </div>
+      </div>
+      <template if:true={contactList}>
+          <table class="slds-table slds-table_cell-buffer slds-table_bordered">
+              <thead>
+                  <tr class="slds-line-height_reset">
+                      <th class="slds-text-title_caps" scope="col">Show Accounts</th>
+                      <th class="slds-text-title_caps" scope="col">Name</th>
+                      <th class="slds-text-title_caps" scope="col">Phone</th>
+                      <th class="slds-text-title_caps" scope="col">Email</th>
+                  </tr>
+              </thead>
+              <tbody>
+                  <template for:each={contacts} for:item="con" for:index="index">
+                      <tr key={con.Id} class="slds-hint-parent">
+                          <td data-label="Show Accounts">
+                              <lightning-input type="radio" name="accountRadio" data-contact-id={con.Id} onchange={handleAccountRadioChange}></lightning-input>
+                          </td>
+                          <td data-label="Name">{con.Name}</td>
+                          <td data-label="Phone">{con.Phone}</td>
+                          <td data-label="Email">{con.Email}</td>
+                      </tr>
+                  </template>
+              </tbody>
+          </table>
+      </template>
+  </lightning-card>
+</template>

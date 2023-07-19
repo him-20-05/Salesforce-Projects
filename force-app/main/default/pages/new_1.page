@@ -1,0 +1,84 @@
+<apex:page Controller="AutoCompleteController" sidebar="false" showHeader="false">
+
+<link rel="stylesheet" href="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.1/themes/smoothness/jquery-ui.css" />
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.1/jquery-ui.min.js"></script>
+<apex:remoteObjects >
+  <apex:remoteObjectModel name="Contact" fields="Id,Name,Email,Phone"/>
+</apex:remoteObjects>
+
+
+  <script>
+   function autocompleteonfocus(row){
+    var selectedId = null;
+       $('input[id$=conName],input[id$=conEmail],input[id$=conPhone]').autocomplete({ 
+        minLength: 2,
+        delay: 500,
+        source: function( request, response ) {
+            var ContactRO = new SObjectModel.Contact();
+            ContactRO.retrieve({where: {Name: {like: request.term + "%" }}}, function(err, records, event) {
+                if (err) {
+                    alert(err);
+                } else {
+                    var result = [];
+                    records.forEach(function(record) {
+                       result.push( { 
+                           label: record.get("Name"),
+                           value: record.get("Id"),
+                           Name : record.get("Name"),
+                           Email: record.get("Email"),
+                           Phone: record.get("Phone"),
+                       });
+                    });
+                    response(result);
+                }
+            });
+        },
+        select: function(event, ui) {        
+            event.preventDefault();
+
+             $(".conEmail"+row).val(ui.item.Email);
+             $(".conName"+row).val(ui.item.Name);
+             $(".conPhone"+row).val(ui.item.Phone); 
+            selectedId = ui.item.value;
+        },
+
+
+    });
+
+    }
+
+
+</script> 
+
+    <apex:form >
+          <div style="margin-left: 5%; margin-right: 5%;margin-top: 5%;"> 
+
+               <apex:outputPanel id="cPanel">
+               <apex:variable value="{!1}" var="rowNum"/>
+               <apex:variable value="{!0}" var="cnt" />
+               <apex:repeat value="{!conList}" var="con" id="conRepeatId">
+
+                        Name:
+                            <apex:inputText value="{!con.Name}"  id="conName"  onfocus="autocompleteonfocus('{!rowNum}');" styleClass="conName{!rowNum}"/>
+                           <br/>
+                           Email :
+                            <apex:inputText value="{!con.Email}"  id="conEmail"  onfocus="autocompleteonfocus('{!rowNum}');" styleClass="conEmail{!rowNum}"/>
+                           <br/>
+                             Phone Number:
+                             <apex:inputText value="{!con.Phone}" id="conPhone"  onfocus="autocompleteonfocus('{!rowNum}');" styleClass="conPhone{!rowNum}"/>
+                            <br/>
+                    <apex:outputPanel rendered="{!IF(cnt>0,true,false)}">
+                            <apex:commandButton value="Remove" action="{!removeContact}" immediate="true" rerender="cPanel">
+                                <apex:param name="index" value="{!cnt}" />
+                            </apex:commandButton> <br/>
+                    </apex:outputPanel>
+                     <apex:variable var="rowNum" value="{!rowNum + 1}"/>
+                 <apex:variable var="cnt" value="{!cnt+1}" />
+               </apex:repeat>
+              </apex:outputPanel> 
+               <apex:commandButton value="Add Contact" action="{!addContact}"  rerender="cPanel" /> 
+            </div>
+    
+ </apex:form>
+</apex:page>

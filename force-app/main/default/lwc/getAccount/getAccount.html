@@ -1,0 +1,13 @@
+<template>
+    <template if:true={accounts.data}>
+        <template for:each={accounts.data} for:item="account">
+            <a href="#" key={account.Id} data-account-id={account.Id} onclick={handleSelect}>
+                <lightning-layout>
+                     <lightning-layout-item padding="horizontal-small">
+                        <p>{account.Name}</p>
+                    </lightning-layout-item>
+                </lightning-layout>
+            </a>
+        </template>
+    </template>
+</template>

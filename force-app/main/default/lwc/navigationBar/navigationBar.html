@@ -1,0 +1,57 @@
+<template>
+  <div class="slds-grid slds-gutters navClass">
+    <div class="logoContainer">
+      <h1 class="heading">{message.title}</h1>
+    </div>
+    <div class="searchContainer">
+      <lightning-input placeholder={message.search} type="Search" style="color: black;"></lightning-input>
+    </div>
+    <div class="userContainer">
+      <lightning-layout>
+        <lightning-layout-item size="4" padding="around-small">
+          <div class="userLogo">
+            <lightning-icon icon-name="action:user"></lightning-icon>
+          </div>
+        </lightning-layout-item>
+        <lightning-layout-item size="4" padding="around-small">
+          <div class="userName">{message.username}</div>
+        </lightning-layout-item>
+        <lightning-layout-item size="4" padding="around-small">
+          <div class="slds-p-around_medium lgc-bg">
+            <lightning-button-menu alternative-text={message.menu} style="background: whitesmoke;" class="button">
+              <lightning-menu-item value="Item One" label={message.itemOne}></lightning-menu-item>
+              <lightning-menu-item value="Item Two" label={message.itemTwo}></lightning-menu-item>
+              <lightning-menu-item value="Item Three" label={message.itemThree}></lightning-menu-item>
+              <lightning-menu-item value="Item Four" label={message.itemFour}></lightning-menu-item>
+            </lightning-button-menu>
+          </div>
+        </lightning-layout-item>
+      </lightning-layout>
+    </div>
+    <div class="cartContainer">
+      <lightning-layout>
+        <lightning-layout-item size="6" padding="around-small">
+          <div class="cartDiv">
+            <lightning-icon icon-name="utility:cart"></lightning-icon>
+          </div>
+        </lightning-layout-item>
+        <lightning-layout-item size="6" padding="around-small">
+          <div class="cartNumber">{message.cart}</div>
+        </lightning-layout-item>
+      </lightning-layout>
+    </div>
+    <div dir="rtl" >
+      <div class="slds-form-element">
+        <label class="slds-checkbox_toggle slds-grid">
+        <span class="slds-form-element__label slds-m-bottom_none">Toggle Label</span>
+        <input type="checkbox" name="checkbox-toggle-15" value="checkbox-toggle-15" aria-describedby="checkbox-toggle-15" />
+        <span id="checkbox-toggle-15" class="slds-checkbox_faux_container" aria-live="assertive">
+        <span class="slds-checkbox_faux"></span>
+        <span class="slds-checkbox_on">Enabled</span>
+        <span class="slds-checkbox_off">Disabled</span>
+        </span>
+        </label>
+        </div>
+    </div>
+  </div>
+</template>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ConnectedApp xmlns="http://soap.sforce.com/2006/04/metadata">
+    <contactEmail>help.desk@mycompany.com</contactEmail>
+    <description>Connected app to securely access customer order status.</description>
+    <iconUrl>https://login.salesforce.com/logos/Standard/case_transcript/icon.png</iconUrl>
+    <label>Customer Order Status</label>
+    <logoUrl>https://login.salesforce.com/logos/Standard/case_transcript/logo.svg</logoUrl>
+    <oauthConfig>
+        <callbackUrl>https://openidconnect.herokuapp.com/callback</callbackUrl>
+        <consumerKey>3MVG9n_HvETGhr3BQfvDsilqkMNg4b7Dfh.x_casdjnfJZrYFpIJcBetdFj3WEjiNYjWPf3p7l1Ev5UH1id0j</consumerKey>
+        <isAdminApproved>false</isAdminApproved>
+        <isClientCredentialEnabled>false</isClientCredentialEnabled>
+        <isConsumerSecretOptional>false</isConsumerSecretOptional>
+        <isIntrospectAllTokens>false</isIntrospectAllTokens>
+        <isSecretRequiredForRefreshToken>true</isSecretRequiredForRefreshToken>
+        <scopes>Api</scopes>
+        <scopes>Web</scopes>
+        <scopes>OpenID</scopes>
+    </oauthConfig>
+    <oauthPolicy>
+        <ipRelaxation>ENFORCE</ipRelaxation>
+        <refreshTokenPolicy>infinite</refreshTokenPolicy>
+    </oauthPolicy>
+</ConnectedApp>

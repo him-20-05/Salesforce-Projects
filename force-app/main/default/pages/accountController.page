@@ -1,0 +1,34 @@
+<apex:page controller="show_accountRecords"> 
+	<apex:pageBlock title="Account List"> 
+        <apex:form >
+        <apex:pageMessages rendered="true" id="errMsg" showDetail="false"/>
+		<apex:pageBlockTable value="{!records}" var="record"  > 
+			<apex:column > 
+				<apex:facet name="header">Account Name</apex:facet> 
+                <apex:outputLink value="/{!record.id}">{!record.name}</apex:outputLink>
+			</apex:column> 
+			<apex:column > 
+				<apex:facet name="header">Account Number</apex:facet> 
+				<apex:outputText value="{!record.AccountNumber}"/> 
+			</apex:column> 
+            <apex:column > 
+				<apex:facet name="header">Phone</apex:facet> 
+				<apex:outputText value="{!record.phone}"/> 
+			</apex:column> 
+            <apex:column > 
+				<apex:facet name="header">NumberOfEmployees</apex:facet> 
+				<apex:outputText value="{!record.NumberOfEmployees}"/> 
+			</apex:column> 
+             <apex:column > 
+				<apex:facet name="header">Rating</apex:facet> 
+				<apex:outputText value="{!record.Rating}"/> 
+			</apex:column> 
+             <apex:column > 
+				<apex:facet name="header">AnnualRevenue</apex:facet> 
+				<apex:outputText value="{!record.AnnualRevenue}"/> 
+			</apex:column> 
+            </apex:pageBlockTable> 
+            </apex:form>
+             </apex:pageBlock> 
+  
+</apex:page>

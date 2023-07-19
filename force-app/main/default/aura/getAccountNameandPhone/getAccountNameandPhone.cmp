@@ -1,0 +1,24 @@
+<aura:component implements="flexipage:availableForAllPageTypes">
+    <aura:attribute name="accountId" type="Id" />
+    <aura:attribute name="selectedAccount" type="Account" />
+    <div style="background-color:white; padding:10px">
+        <force:recordData aura:id="getAccount" recordId="{!v.accountId}" fields="['Name', 'Phone',]"
+            targetFields="{!v.selectedAccount}" />
+        <p>I am in Aura Component</p>
+        <table class="slds-table slds-table_bordered">
+            <tr>
+                <td>Account Name</td>
+                <td>{!v.selectedAccount.Name}</td>
+            </tr>
+            <tr>
+                <td>Account Phone</td>
+                <td>{!v.selectedAccount.Phone}</td>
+            </tr>
+        </table>
+
+        <lightning:card title="LWC">
+            <b>I am Web Component</b>
+            <c:getAccount onaccountselect="{!c.handleAccountSelect}" />
+        </lightning:card>
+    </div>
+</aura:component>

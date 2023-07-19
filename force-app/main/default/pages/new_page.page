@@ -1,0 +1,44 @@
+<apex:page >
+  <apex:form styleClass="nice-form">
+  <style>
+      .nice-form input[type="text"], .nice-form input[type="tel"], .nice-form input[type="email"] {
+  display: block;
+  width: 100%;
+  padding: 12px;
+  margin: 8px 0;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+.nice-form input[type="text"]:focus, .nice-form input[type="tel"]:focus, .nice-form input[type="email"]:focus {
+  border: 2px solid #5f9ea0;
+}
+
+.nice-form .btn {
+  background-color: #5f9ea0;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.nice-form .btn:hover {
+  background-color: #4CAF50;
+}
+
+  </style>
+    <apex:pageBlock >
+      <apex:pageBlockSection >
+        <apex:inputText label="First Name"/>
+        <apex:inputText label="Last Name" />
+        <apex:inputText label="Email"/>
+        <apex:inputText label="Phone"/>
+      </apex:pageBlockSection>
+      <apex:pageBlockButtons >
+        <apex:commandButton value="Save"/>
+      </apex:pageBlockButtons>
+    </apex:pageBlock>
+  </apex:form>
+</apex:page>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>EndDate__c</fullName>
+    <externalId>false</externalId>
+    <formula>CASE(
+ MOD(  start_date__c - DATE(1900, 1, 7), 7),
+  0, (start_date__c ) +   Term_in_days__c + FLOOR((Term_in_days__c -1)/7)*2,
+  1, (start_date__c ) + Term_in_days__c + FLOOR((Term_in_days__c )/7)*2,
+  2, (start_date__c ) + Term_in_days__c + FLOOR((Term_in_days__c +1)/7)*2,
+  3, (start_date__c ) + Term_in_days__c + FLOOR((Term_in_days__c +2)/7)*2,
+  4, (start_date__c ) + Term_in_days__c + FLOOR((Term_in_days__c +3)/7)*2,
+  5, (start_date__c ) + Term_in_days__c + CEILING((Term_in_days__c )/7)*2,
+  6, (start_date__c ) - IF(Term_in_days__c &gt;0,1,0) + Term_in_days__c + CEILING((Term_in_days__c )/7)*2,
+null)-1 + holidays_counter__c</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>EndDate</label>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Date</type>
+</CustomField>

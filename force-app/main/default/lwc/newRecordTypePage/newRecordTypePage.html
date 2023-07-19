@@ -1,0 +1,17 @@
+<template>
+    <lightning-card>
+      <template if:true={recordTypeOptions}>
+        <lightning-combobox label="Select Record Type"
+                            value={selectedRecordType}
+                            options={recordTypeOptions}
+                            onchange={handleRecordTypeChange}>
+        </lightning-combobox>
+        <template if:true={recordTypeFields}>
+          <template for:each={recordTypeFields} for:item="field">
+            <lightning-input-field key={field} field-name={field}></lightning-input-field>
+          </template>
+        </template>
+      </template>
+    </lightning-card>
+  </template>
+  

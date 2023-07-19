@@ -1,0 +1,23 @@
+.newcol{
+    margin-top: 4%
+}
+.slds-line-height_reset{
+    font-family: fantasy;
+}
+
+.btn{
+    margin:1%;
+    margin-top: 1%;
+    margin-bottom: 1%;
+}
+.slds-input{
+    border: 0;
+    outline: 0;
+    background: white;
+}
+.slds-p-horizontal_medium{
+
+    border: 0;
+    outline: 0;
+
+}

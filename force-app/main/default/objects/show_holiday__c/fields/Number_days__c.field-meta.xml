@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Number_days__c</fullName>
+    <externalId>false</externalId>
+    <formula>((5 * ( FLOOR( (   end_date__c  - DATE( 1900, 1, 8) ) / 7 ) ) + MIN( 5, MOD(  start_date__c  - DATE( 1900, 1, 8), 7 ) ) )
+-
+(5 * ( FLOOR( ( start_date__c  - DATE( 1900, 1, 8) ) / 7 ) ) + MIN( 5, MOD( start_date__c  - DATE( 1900, 1, 8), 7 ) ) ) + 1 
+-
+IF(AND(start_date__c  &lt;= DATEVALUE(&quot;2023-03-04&quot;),end_date__c  &gt;= DATEVALUE(&quot;2023-03-04&quot;)),1,0) -
+IF(AND(start_date__c  &lt;= DATEVALUE(&quot;2023-03-05&quot;),end_date__c  &gt;= DATEVALUE(&quot;2023-03-05&quot;)),1,0) -
+IF(AND(start_date__c  &lt;= DATEVALUE(&quot;2023-03-07&quot;),end_date__c  &gt;= DATEVALUE(&quot;2023-03-07&quot;)),1,0) -
+IF(AND(start_date__c  &lt;= DATEVALUE(&quot;2023-03-12&quot;),end_date__c  &gt;= DATEVALUE(&quot;2023-03-12&quot;)),1,0)
+)</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Number days</label>
+    <precision>18</precision>
+    <required>false</required>
+    <scale>0</scale>
+    <trackTrending>false</trackTrending>
+    <type>Number</type>
+    <unique>false</unique>
+</CustomField>

@@ -1,0 +1,39 @@
+<template>
+    <div class="slds-grid slds-gutters subNavigation">
+        <div class="slds-col slds-p-around_medium navLeftContainer slds-align_absolute-left">
+           
+            <!-- Navigation dropdown bar -->
+            <lightning-button-menu alternative-text="Navigation Menu" class="navigationButton" label="All"> 
+              <lightning-menu-item value="Home" label="Home" onclick={navigateToHome}></lightning-menu-item>
+              <lightning-menu-item value="Categories" label="Categories"></lightning-menu-item>
+              <lightning-menu-item value="Deals" label="Deals"></lightning-menu-item>
+              <lightning-menu-item value="Orders" label="Orders"></lightning-menu-item>
+              <lightning-menu-item value="Books" label="Books" onclick={navigateToBook}></lightning-menu-item>
+              <lightning-menu-item value="Fashion" label="Fashion" onclick={navigateToFashion}></lightning-menu-item>
+              <lightning-menu-item value="Mobiles" label="Mobiles" onclick={navigateToMobiles}></lightning-menu-item>
+            </lightning-button-menu>
+      
+        </div>
+
+
+        <div class="slds-col slds-p-around_medium columnHover" onclick={navigateToHome}>
+            Home
+        </div>
+
+        <div class="slds-col slds-p-around_medium columnHover" onclick={navigateToBook}>
+            Books
+        </div>
+
+        <div class="slds-col slds-p-around_medium columnHover" onclick={navigateToFashion}>
+            Fashion
+        </div>
+
+        <div class="slds-col slds-p-around_medium columnHover" onclick={navigateToMobiles}>
+            Mobiles
+        </div>
+
+
+
+
+    </div>
+</template>

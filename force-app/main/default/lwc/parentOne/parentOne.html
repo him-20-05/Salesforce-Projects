@@ -1,0 +1,36 @@
+<template>
+    <c-new-account-related-task onsamplevent={handleChange}></c-new-account-related-task>
+
+    <table class="slds-table slds-table_cell-buffer slds-table_bordered">
+        <thead>
+            <tr class="slds-line-height_reset">
+                <th class="slds-text-title_caps" scope="col">Account Name</th>
+                <th class="slds-text-title_caps" scope="col">Account Address</th>
+                <th class="slds-text-title_caps" scope="col">Shiping Address</th>
+                <th class="slds-text-title_caps" scope="col">Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <template for:each={records} for:item="acc">
+                <tr key={acc.Id}>
+                    <td data-label="Name">
+                        {acc.Name}
+                    </td>
+                    <td data-label="AccountNumber">
+                        {acc.AccountNumber}
+                    </td>
+                    <td data-label="ShippingAddress">
+                        {acc.ShippingAddress}
+                    </td>
+                    <td data-label="Action">
+
+                        <lightning-button label="New Appointment" variant="brand" onclick={handleAppointment} style="margin:10%"></lightning-button>
+
+                    </td>
+                   
+                </tr>
+               
+            </template>
+        </tbody>
+        </table>
+</template>
