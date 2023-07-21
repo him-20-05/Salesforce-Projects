@@ -1,0 +1,5 @@
+<aura:component >
+
+<c:bMICalculator />
+
+</aura:component>	

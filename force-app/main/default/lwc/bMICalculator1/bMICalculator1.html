@@ -1,0 +1,43 @@
+<template>
+    <div class="container">
+      <div class="bmi-container">
+        <h1>BMI Calculator</h1>
+        <div class="bmi-input">
+            <label>Height (cm):</label>
+          <input type="number" class="height" step="0.1" placeholder="Enter your height" required onchange={handleInputChange} value={height}>
+
+          <label >Weight (kg):</label>
+          <input type="number" id="weight" step="0.1" placeholder="Enter your weight" required onchange={handleInputChange} value={weight}>
+
+          
+          <button type="button" onclick={calculateBMI}>Calculate BMI</button>
+        </div>
+  
+        <template if:false={showResult}>
+          <div id="bmi-explanation" if:false={showResult}>
+            <h2>BMI Categories:</h2>
+            <p>
+              Underweight: BMI less than 18.5<br>
+              Normal weight: BMI 18.5 - 24.9<br>
+              Overweight: BMI 25 - 29.9<br>
+              Obesity: BMI 30 or greater
+            </p>
+          </div>
+        </template>
+  
+        <template if:true={errorMessage}>
+          <div class="slds-p-around_medium">
+            <p style="color: red; font-size:x-large">{errorMessage}</p>
+          </div>
+        </template>
+  
+        <template if:true={showResult}>
+          <div class="slds-p-around_medium">
+            <h1 style="font-family: fantasy;">Your BMI: {bmiValue}</h1>
+            <h1 style="font-family: fantasy;">BMI Category: {bmiCategory}</h1>
+          </div>
+        </template>
+      </div>
+    </div>
+  </template>
+  

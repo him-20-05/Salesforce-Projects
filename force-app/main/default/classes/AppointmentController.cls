@@ -18,6 +18,7 @@ public with sharing class AppointmentController {
             System.debug('Error creating appointment: ' + ex.getMessage());
             throw new AuraHandledException('Error creating appointment: ' + ex.getMessage());
         }
+        
     }
 
     public class AppointmentData {
@@ -39,5 +40,28 @@ public with sharing class AppointmentController {
         public Date startDate;
         @AuraEnabled
         public String description;
+    }
+
+    @AuraEnabled(cacheable=true)
+    public static Map<String, List<String>> getPicklistValues() {
+        Map<String, List<String>> picklistValues = new Map<String, List<String>>();
+        
+        // Fetch picklist values for Role field
+        List<Schema.PicklistEntry> rolePicklistValues = Appointment__c.Role__c.getDescribe().getPicklistValues();
+        List<String> roleOptions = new List<String>();
+        for (Schema.PicklistEntry entry : rolePicklistValues) {
+            roleOptions.add(entry.getLabel());
+        }
+        picklistValues.put('RolePicklist', roleOptions);
+        
+        // Fetch picklist values for Work Type field
+        List<Schema.PicklistEntry> workTypePicklistValues = Appointment__c.Work_Type__c.getDescribe().getPicklistValues();
+        List<String> workTypeOptions = new List<String>();
+        for (Schema.PicklistEntry entry : workTypePicklistValues) {
+            workTypeOptions.add(entry.getLabel());
+        }
+        picklistValues.put('WorkTypePicklist', workTypeOptions);
+        
+        return picklistValues;
     }
 }

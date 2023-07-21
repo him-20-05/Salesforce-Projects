@@ -1,0 +1,55 @@
+.container{
+    background-image: url('https://img.freepik.com/premium-photo/body-massage-brush-cosmetic-oil-body-care-concept_350891-630.jpg?w=740');
+    background-size: cover;
+    background-position: center;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+}
+
+
+.bmi-container {
+    width: 400px; 
+    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 30px;
+    background: black;
+    border: 1px solid;
+    border-radius: 13px;
+    padding:60px;
+}
+.bmi-input {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+}
+.bmi-explanation {
+    margin-top: 30px;
+}
+h1 {
+    margin-bottom: 10px;
+}
+label {
+    font-weight: bold;
+}
+input {
+    width: 150px;
+    margin-bottom: 10px;
+    padding: 5px;
+}
+button {
+    padding: 8px 16px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+button:hover {
+    background-color: #45a049;
+}

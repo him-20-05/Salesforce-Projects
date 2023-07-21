@@ -1,26 +1,29 @@
-
 import { LightningElement, track, wire } from 'lwc';
 import searchContacts from '@salesforce/apex/ContactControllerClass.searchContacts';
 import getAccountDetails from '@salesforce/apex/ContactControllerClass.getAccountDetails';
 import { NavigationMixin } from 'lightning/navigation';
-import APPOINTMENT_OBJECT from '@salesforce/schema/Appointment__c';
 
-const CONTACT_COLUMNS = [
-  { label: 'Name', fieldName: 'Name', type: 'text' },
-  { label: 'Email', fieldName: 'Email', type: 'email' },
-  { label: 'Phone', fieldName: 'Phone', type: 'phone' }
-];
+import Appointment__c from '@salesforce/schema/Appointment__c'
+
+// const CONTACT_COLUMNS = [
+//   { label: 'Name', fieldName: 'Name', type: 'text' },
+//   { label: 'Email', fieldName: 'Email', type: 'email' },
+//   { label: 'Phone', fieldName: 'Phone', type: 'phone' }
+// ];
 
 export default class ContactSearch extends NavigationMixin(LightningElement) {
   @track contacts;
-  @track contactColumns = CONTACT_COLUMNS;
+  //@track contactColumns = CONTACT_COLUMNS;
   @track contactOptions = [];
   @track selectedContactId = '';
   @track selectedContact = {};
 
   searchKeyword = '';
-  objectApiName = APPOINTMENT_OBJECT;
+
+  objectApiName = Appointment__c;
+  
   @track showCreateAppointment = false;
+
 
   handleSearchChange(event) {
     this.searchKeyword = event.target.value;
@@ -52,18 +55,10 @@ export default class ContactSearch extends NavigationMixin(LightningElement) {
     this.contactOptions = [];
     this.selectedContactId = '';
     this.selectedContact = '';
-
+    this.showCreateAppointment = false; // Add this line to close the "Create Appointment" page
+  
     const inputField = this.template.querySelector('lightning-input');
     inputField.value = ''; // Clear the value of the input field
-  }
-
-  handleContactSelection(event) {
-    this.selectedContactId = event.target.dataset.contactId;
-    if (this.selectedContactId) {
-      this.loadAccountDetails({ contactId: this.selectedContactId });
-    } else {
-      this.selectedContact = {};
-    }
   }
 
   @wire(getAccountDetails, { contactId: '$selectedContactId' })
@@ -74,6 +69,17 @@ export default class ContactSearch extends NavigationMixin(LightningElement) {
       console.error('Error retrieving account details', error);
     }
   }
+  
+  handleContactSelection(event) {
+    this.selectedContactId = event.target.dataset.contactId;
+    if (this.selectedContactId) {
+      this.loadAccountDetails({ contactId: this.selectedContactId });
+    } else {
+      this.selectedContact = {};
+    }
+  }
+
+ 
 
   handleContactClick(event) {
     const contactId = event.target.dataset.contactId;
@@ -100,20 +106,7 @@ export default class ContactSearch extends NavigationMixin(LightningElement) {
     this.showCreateAppointment = true;
   }
 
-  handleSaveAppointment() {
-    const selectedContactNameInput = this.template.querySelector('lightning-input[data-selected-contact-name]');
-    const selectedAccountNameInput = this.template.querySelector('lightning-input[data-selected-account-name]');
-    
-    const selectedContactName = selectedContactNameInput.value;
-    const selectedAccountName = selectedAccountNameInput.value;
-    
-    // Logic to save the appointment record goes here
-    // You can now use selectedContactName and selectedAccountName
-    
-    this.showCreateAppointment = false;
-    this.selectedContactId = '';
-    this.selectedContact = {};
-  }
+  
   
 
   get concatenatedBillingAddress() {
@@ -143,6 +136,20 @@ export default class ContactSearch extends NavigationMixin(LightningElement) {
     return '';
   }
 
+  handleAppointmentSubmit(event) {
+    event.preventDefault(); // Prevent the default form submission
+    const fields = event.detail.fields;
+    // Set the Contact and Account IDs from the selectedContact object
+    fields.Contact__c = this.selectedContact.Id;
+    fields.Account__c = this.selectedContact.Account.Id;
+   
+    this.template.querySelector('lightning-record-form').submit(fields);
+  }
+
+  handleAppointmentCreated(event) {
+    this.showCreateAppointment = false;
+
+
   
-  
+}
 }

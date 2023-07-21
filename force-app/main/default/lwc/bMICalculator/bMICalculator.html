@@ -1,0 +1,80 @@
+<template>
+    <div class="bmi-calculator-container">
+      <div class="bmi-container">
+        <h1 slot="title" class="custom-card-title">BMI Calculator</h1>
+        <div class="bmi-input">
+            <label>Height (in cm)</label><br/>
+          <input  type="number" name="height" step="1" value={height} onchange={handleInputChange} />
+
+          <label >Weight (in kg)</label><br/>
+          <input  type="number" name="weight" step="0.1" value={weight} onchange={handleInputChange}/>
+
+          <button type="button" onclick={calculateBMI} class="btn">Calculate BMI</button>
+        </div>
+
+        <template if:false={showResult}>
+            <div class="bmi-info-card" if:false={showResult}>
+                <h2 slot="title" style="color:darkorange; font-weight:700;"> What is BMI?</h2> &nbsp;
+                <div class="slds-p-around_medium">
+                    <h3>
+                         &nbsp; BMI stands for Body Mass Index. It is a value   derived &nbsp; from an individual's height and weight, used to classify body weight categories.
+                    </h3>
+                   
+                </div>
+                &nbsp;
+                <h2  style="color:black; font-weight:700; margin-left: 2%;
+                font-size: larger;">Under 18.5</h2> &nbsp;
+                <div class="slds-p-around_medium">
+                    <h3>
+                        You are very underweight and possibly malnourished.
+                    </h3>
+                   
+                </div> &nbsp;
+                <h2 style="color:darkgreen; font-weight:700; margin-left: 2%;
+                font-size: larger;">Between 18.5 and 24.9</h2> &nbsp;
+                <div class="slds-p-around_medium">
+                    <h3>
+                        &nbsp; You have healthy weight range for young and middle-aged adults.
+                    </h3>
+                   
+                </div> &nbsp;
+                <h2  style="color:darkmagenta; font-weight:700; margin-left: 2%;
+                font-size: larger;">Between 25 and 29.9</h2> &nbsp;
+                <div class="slds-p-around_medium">
+                    <h3>
+                        You are overweight.
+                    </h3>
+                   
+                </div> &nbsp;
+
+                <h2 style="color:crimson; font-weight:700;
+                margin-left: 2%;
+    font-size: larger;">Above 29.9</h2> &nbsp;
+                <div class="slds-p-around_medium">
+                    <h3>
+                        Obese
+                    </h3>
+                   
+                </div>
+            </div>
+        </template>
+
+        <template if:true={errorMessage}>
+            <div class="slds-p-around_medium">
+                <p style="color: red; font-size:x-large">{errorMessage}</p>
+            </div>
+        </template>
+         
+          
+        
+  
+        <template if:true={showResult}>
+          <div class="result">
+            <h4 style="font-family:'Courier New', Courier, monospace;">Your BMI: <span style="color:darkred">{bmiValue}</span></h4>
+            <h4  style="font-family:'Courier New', Courier, monospace">BMI Category: <span style="color:deeppink">{bmiCategory}</span></h4>
+          </div>
+        </template>
+      </div>
+    </div>
+  </template>
+  
