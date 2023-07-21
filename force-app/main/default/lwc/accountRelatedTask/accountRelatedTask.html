@@ -1,118 +1,138 @@
 <template>
-    <lightning-card title="Contact Search">
-      <div class="slds-p-horizontal_medium">
-        <lightning-input label="Search" onchange={handleSearchChange}></lightning-input>
-      </div>
-      <div class="btn">
-        <lightning-button label="Search" variant="brand" onclick={handleSearch} style="margin:1% "></lightning-button>
-        <lightning-button label="Reset" variant="neutral" onclick={handleReset}></lightning-button>
-      </div>
-      <div class="slds-p-horizontal_medium">
-        <template if:true={contacts}>
-          <table class="slds-table slds-table_cell-buffer slds-table_bordered">
-            <thead>
-              <tr class="slds-line-height_reset">
-                <th class="slds-text-title_caps" scope="col">Select</th>
-                <th class="slds-text-title_caps" scope="col">Name</th>
-                <th class="slds-text-title_caps" scope="col">Phone</th>
-                <th class="slds-text-title_caps" scope="col">Email</th>
-                <th class="slds-text-title_caps" scope="col">Account Id</th>
-                <th class="slds-text-title_caps" scope="col">Title</th>
+  <lightning-card title="Contact Search">
+    <div class="slds-p-horizontal_medium">
+      <lightning-input label="Search" onchange={handleSearchChange}></lightning-input>
+    </div>
+    <div class="btn">
+      <lightning-button label="Search" variant="brand" onclick={handleSearch} style="margin:1% "></lightning-button>
+      <lightning-button label="Reset" variant="neutral" onclick={handleReset}></lightning-button>
+    </div>
+    <div class="slds-p-horizontal_medium">
+      <template if:true={contacts}>
+        <table class="slds-table slds-table_cell-buffer slds-table_bordered">
+          <thead>
+            <tr class="slds-line-height_reset">
+              <th class="slds-text-title_caps" scope="col">Select</th>
+              <th class="slds-text-title_caps" scope="col">Name</th>
+              <th class="slds-text-title_caps" scope="col">Phone</th>
+              <th class="slds-text-title_caps" scope="col">Email</th>
+              <th class="slds-text-title_caps" scope="col">Account Id</th>
+              <th class="slds-text-title_caps" scope="col">Title</th>
+            </tr>
+          </thead>
+          <tbody>
+            <template for:each={contacts} for:item="con" for:index="index">
+              <tr key={con.Id} class="slds-hint-parent">
+                <td>
+                  <lightning-input
+                    type="radio"
+                    name="contactRadio"
+                    data-contact-id={con.Id}
+                    data-index={index}
+                    onchange={handleContactSelection}
+                  ></lightning-input>
+                </td>
+                <td>
+                  <a href="javascript:void(0);" onclick={handleContactClick} data-contact-id={con.Id}>{con.Name}</a>
+                </td>
+                <td>{con.Phone}</td>
+                <td>{con.Email}</td>
+                <td>
+                  <a href="javascript:void(0);" onclick={handleAccountClick} data-account-id={con.AccountId}>{con.AccountId}</a>
+                </td>
+                <td>{con.Title}</td>
               </tr>
-            </thead>
-            <tbody>
-              <template for:each={contacts} for:item="con" for:index="index">
-                <tr key={con.Id} class="slds-hint-parent">
-                  <td>
-                    <lightning-input
-                      type="radio"
-                      name="contactRadio"
-                      data-contact-id={con.Id}
-                      data-index={index}
-                      onchange={handleContactSelection}
-                    ></lightning-input>
-                  </td>
-                  <td>
-                    <a href="javascript:void(0);" onclick={handleContactClick} data-contact-id={con.Id}>{con.Name}</a>
-                  </td>
-                  <td>{con.Phone}</td>
-                  <td>{con.Email}</td>
-                  <td>
-                    <a href="javascript:void(0);" onclick={handleAccountClick} data-account-id={con.AccountId}>{con.AccountId}</a>
-                  </td>
-                  <td>{con.Title}</td>
-                </tr>
-              </template>
-            </tbody>
-          </table>
-          <template if:true={selectedContact.Id}>
-            <lightning-card title="Account Details">
-              <div class="slds-p-horizontal_medium">
-                <table class="slds-table slds-table_cell-buffer slds-table_bordered slds-table_col-bordered" border="1">
-                  <thead>
-                    <tr class="slds-line-height_reset">
-                      <th>Account Name</th>
-                      <th>Account Number</th>
-                      <th>Billing Address</th>
-                      <th>Action</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr class="slds-hint-parent">
-                      <td>{selectedContact.Account.Name}</td>
-                      <td>{selectedContact.Account.AccountNumber}</td>
-                      <td>
-                        <template if:true={selectedContact.Account.BillingAddress}>
-                          <div>{selectedContact.Account.BillingAddress.street}</div>
-                          <div>{selectedContact.Account.BillingAddress.city}, {selectedContact.Account.BillingAddress.state}</div>
-                          <div>{selectedContact.Account.BillingAddress.postalCode}</div>
-                          <div>{selectedContact.Account.BillingAddress.country}</div>
-                        </template>
-                        <template if:false={selectedContact.Account.BillingAddress}>
-                          <p>No billing address available.</p>
-                        </template>
-                      </td>
-                      <td>
-                        <lightning-button label="New Appointment" variant="brand" onclick={handleNewAppointment}></lightning-button>
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
-                <!-- Add other relevant account fields here -->
-              </div>
-            </lightning-card>
-          </template>
-          <template if:false={selectedContact.Id}>
-            <p>No account details available.</p>
-          </template>
+            </template>
+          </tbody>
+        </table>
+        <template if:true={selectedContact.Id}>
+          <lightning-card title="Account Details">
+            <div class="slds-p-horizontal_medium">
+              <table class="slds-table slds-table_cell-buffer slds-table_bordered slds-table_col-bordered" border="1">
+                <thead>
+                  <tr class="slds-line-height_reset">
+                    <th>Account Name</th>
+                    <th>Account Number</th>
+                    <th>Billing Address</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr class="slds-hint-parent">
+                    <td>{selectedContact.Account.Name}</td>
+                    <td>{selectedContact.Account.AccountNumber}</td>
+                    <td>
+                      <template if:true={selectedContact.Account.BillingAddress}>
+                        <div>{selectedContact.Account.BillingAddress.street}</div>
+                        <div>{selectedContact.Account.BillingAddress.city}, {selectedContact.Account.BillingAddress.state}</div>
+                        <div>{selectedContact.Account.BillingAddress.postalCode}</div>
+                        <div>{selectedContact.Account.BillingAddress.country}</div>
+                      </template>
+                      <template if:false={selectedContact.Account.BillingAddress}>
+                        <p>No billing address available.</p>
+                      </template>
+                    </td>
+                    <td>
+                      <lightning-button label="New Appointment" variant="brand" onclick={handleNewAppointment}></lightning-button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+              <!-- Add other relevant account fields here -->
+            </div>
+          </lightning-card>
         </template>
-      </div>
-  
-      <template if:true={showCreateAppointment}>
-        <lightning-card title="Create Appointment">
-          <div class="slds-p-horizontal_medium">
-            <lightning-input label="Contact Name" value={selectedContact.Name} disabled style="border: none; outline: none;"></lightning-input>
-            <lightning-input label="Email" value={selectedContact.Email} disabled style="border: none; outline: none;"></lightning-input>
-            <lightning-input label="Phone Name" value={selectedContact.Phone} disabled style="border: none; outline: none;"></lightning-input>
-            <lightning-input label="Account Name" value={selectedContact.Account.Name} disabled style="border: none; outline: none;"></lightning-input>
-            <lightning-input label="Account Number" value={selectedContact.Account.AccountNumber} disabled style="border: none; outline: none;"></lightning-input>
-            <template if:true={selectedContact.Account.BillingAddress}>
-                <lightning-input label="Billing Address" value={concatenatedBillingAddress} disabled></lightning-input>
-              </template>
-              <template if:false={selectedContact.Account.BillingAddress}>
-                <p>No billing address available.</p>
-              </template>
-
-              
-
-              <lightning-record-form
-              object-api-name={objectApiName}
-              columns="2"
-              layout-type="full"
-              onsubmit={handleSaveAppointment}
-            ></lightning-record-form>
-          </div>
-        </lightning-card>
+        <template if:false={selectedContact.Id}>
+          <p>No account details available.</p>
+        </template>
       </template>
-    </lightning-card>
-  </template>
+    </div>
+
+    <template if:true={showCreateAppointment}>
+      <lightning-card title="Create Appointment">
+        <div class="slds-p-horizontal_medium">
+          <lightning-input label="Contact Name" value={selectedContact.Name} disabled style="border: none; outline: none;"></lightning-input>
+          <lightning-input label="Email" value={selectedContact.Email} disabled style="border: none; outline: none;"></lightning-input>
+          <lightning-input label="Phone Name" value={selectedContact.Phone} disabled style="border: none; outline: none;"></lightning-input>
+          <lightning-input label="Account Name" value={selectedContact.Account.Name} disabled style="border: none; outline: none;"></lightning-input>
+          <lightning-input label="Account Number" value={selectedContact.Account.AccountNumber} disabled style="border: none; outline: none;"></lightning-input>
+          <template if:true={selectedContact.Account.BillingAddress}>
+              <lightning-input label="Billing Address" value={concatenatedBillingAddress} disabled></lightning-input>
+            </template>
+            <template if:false={selectedContact.Account.BillingAddress}>
+              <p>No billing address available.</p>
+            </template>
+
+            <lightning-record-form
+        object-api-name={objectApiName}
+        columns="2"
+        layout-type="full"
+        onsuccess={handleAppointmentCreated}
+        onsubmit={handleAppointmentSubmit}
+      >
+        <lightning-input-field
+          field-name="Contact__c"
+          value={selectedContact.Id}
+        ></lightning-input-field>
+        <lightning-input-field
+          field-name="Account__c"
+          value={selectedContact.Account.Id}
+        ></lightning-input-field>
+        <!-- Add other relevant Appointment fields here -->
+        <div class="slds-m-top_medium">
+          <lightning-button
+            type="submit"
+            label="Create Appointment"
+            variant="brand"
+          ></lightning-button>
+        </div>
+      </lightning-record-form>
+
+
+           
+
+          </div>
+      </lightning-card>
+    </template>
+  </lightning-card>
+</template>
