@@ -60,6 +60,18 @@ export default class ContactSearch extends NavigationMixin(LightningElement) {
     const inputField = this.template.querySelector('lightning-input');
     inputField.value = ''; // Clear the value of the input field
   }
+<<<<<<< HEAD
+=======
+  
+  handleContactSelection(event) {
+    this.selectedContactId = event.target.dataset.contactId;
+    if (this.selectedContactId) {
+      this.loadAccountDetails({ contactId: this.selectedContactId });
+    } else {
+      this.selectedContact = {};
+    }
+  }
+>>>>>>> e2f74495b417f1534676886eb8da80703dbd4d9f
 
   @wire(getAccountDetails, { contactId: '$selectedContactId' })
   loadAccountDetails({ error, data }) {
@@ -142,7 +154,13 @@ export default class ContactSearch extends NavigationMixin(LightningElement) {
     // Set the Contact and Account IDs from the selectedContact object
     fields.Contact__c = this.selectedContact.Id;
     fields.Account__c = this.selectedContact.Account.Id;
+<<<<<<< HEAD
    
+=======
+    // Other fields can be set similarly if needed
+
+    // Submit the form programmatically
+>>>>>>> e2f74495b417f1534676886eb8da80703dbd4d9f
     this.template.querySelector('lightning-record-form').submit(fields);
   }
 
