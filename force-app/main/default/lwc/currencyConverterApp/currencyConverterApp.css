@@ -1,0 +1,50 @@
+.slds-card{
+    max-width: 520px;
+    background: #0b2451;
+    border-radius: 25px;
+    min-width: 370px;
+    padding: 16px;
+}
+.container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 16px;
+}
+.custom-button, .custom-button:hover, .custom-button:active{
+    background: #f9ba49;
+    color: #0c2451;
+    padding: 6px;
+    font-size: 24px;
+    margin-top: 12px;
+}
+.baseline{
+    align-items: baseline;
+}
+.currencyApp{
+    background-image: url('https://shailforcee-dev-ed--c.develop.vf.force.com/resource/1690979545000/currencyImage?');
+    background-size: cover;
+    background-position: center;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.custom-icon{
+    --slds-c-icon-color-background: #f9ba49;
+    --slds-c-icon-color-foreground: #0c2451;
+    --slds-c-icon-color-foreground-default:  #f9ba49;
+    transform: rotate(45deg);
+}
+.result{
+    font-size: 24px;
+    margin-bottom: 24px;
+    font-weight: bold;
+    color: #1b96ff;
+}
+
+.result-to{
+    color : #fb8500
+}

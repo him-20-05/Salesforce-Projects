@@ -1,5 +1,5 @@
 .bmi-calculator-container {
-    background-image: url('https://apac-f-dev-ed--c.develop.vf.force.com/resource/1690533818000/backgroundImage');
+    background-image: url('https://shailforcee-dev-ed--c.develop.vf.force.com/resource/1690533818000/backgroundImage?');
     background-size: cover;
     background-position: center;
     min-height: 100vh;
@@ -17,7 +17,7 @@
     flex-direction: column;
     align-items: center;
     margin-top: 30px;
-    background: #040720;
+    background: #0b0d21;
     border: 1px solid;
     border-radius: 13px;
     padding: 40px;
@@ -73,9 +73,10 @@
   
   input {
     width: 100%;
-    max-width: 150px;
+    max-width: 500px;
     margin-bottom: 10px;
     padding: 5px;
+    min-width: 275px;
   }
   
   button {
@@ -84,6 +85,8 @@
     color: white;
     border: none;
     cursor: pointer;
+    min-width: 275px;
+    margin: 10%;
   }
   
   button:hover {

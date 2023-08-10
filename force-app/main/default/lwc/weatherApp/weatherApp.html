@@ -1,0 +1,54 @@
+<template>
+    <div class="WeatherApp flex">
+        <div class="card">
+            <header class="flex">
+                <template if:true={showWeatherDetails}>
+                    <img src={arrowBackIcon} alt="back arrow" onclick={clearWeatherData} class="slds-m-right_medium cursor" />
+                  </template>
+      
+                <h1>Weather App</h1>
+            </header>
+            <template if:false={showWeatherDetails}>
+            <section class="slds-p-around_large">
+                <form onsubmit={handleSubmit}>
+                    <input type="text" placeholder="Enter city nam
+                    e" required spellcheck="false" onkeyup={searchHandler}/>
+                    <button type="submit" class="slds-m-top_large" >Search</button>
+                </form>
+                
+            </section>
+           
+            </template>
+            <template if:true={showWeatherDetails}>
+            <section class="slds-m-around_large slds-text-align_center" >
+                <div class="temperature">
+                    <img src={weatherIcon} alt="weather icon" class="image"/><br/>
+                    <span>{temperature}</span>
+                    <span>°</span>C
+                </div>
+                <div class="description">{description}</div>
+                <div class="location">
+                    <img src={mapIcon} alt="map icon"/>
+                    <span>{location}</span>
+                </div>
+            </section>
+            <footer >
+                <div class="feels_like">
+                    <div>
+                        <img src={thermometerIcon} alt="thermometer icon"/>
+                        <div>{feelsLike}°C</div>
+                        <p>Feels like</p>
+                    </div>
+                </div>
+                <div class="humidity">
+                    <div>
+                        <img src={dropletIcon} alt="droplet icon"/>
+                        <div>{humidity}%</div>
+                        <p>Humidity</p>
+                    </div>
+                </div>
+            </footer>
+        </template>
+        </div>
+    </div>
+</template>
